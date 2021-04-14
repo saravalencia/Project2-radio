@@ -2,6 +2,7 @@ import Navbar from './components/Navbar/Navbar'
 import './App.css';
 import {Map} from './components/map/Map'; 
 
+
 function App() {
 
 
@@ -11,6 +12,8 @@ function App() {
     
 
     <Map/>
+
+   
     </div>
   );
 }
