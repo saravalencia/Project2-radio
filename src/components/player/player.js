@@ -5,7 +5,7 @@ function player() {
     return (
       <div className="player">
       
-      <AudioPlayer/>
+      <AudioPlaye  />
        
       </div>
     );
