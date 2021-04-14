@@ -3,17 +3,16 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import './map.css';
+import {RadioData} from './RadioData'
+import {getData} from './apiCall';
 
+
+//import {RadioData} from 'RadioData'
 /*[ISO2 country code] to find countrys by code*/
-
 
  export function Map() {
 
-  const getData = (countryCode) => {
-    fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
-    .then(response => response.json())
-    .then(data => console.log(data))
-  }
+ 
 
 
 const chart = am4core.create("chartdiv", am4maps.MapChart);
@@ -55,8 +54,26 @@ polygonTemplate.events.on('hit', function (e)  {
 // Create hover state and set alternative fill color
 
     return (
+
+      <div className="containerAll">
+            <div className={!getData ? 'RadioItemsContainer' : 'RadioItemsHidden'} >
+            <ul className='RadioList'>
+                <ul className='RadioList'>
+                {RadioData.map((item, index) =>{
+                    return (
+                        <li className='li-radios' key={index}>
+                            <a className={item.cName} href={item.url}>
+                                {item.icon}{item.title}
+                            </a>
+                        </li>
+                    )})}
+                    </ul>
+            </ul>
+
+        </div>
       <div id = "chartdiv" className="chartdiv">
      
+      </div>
       </div>
     );
   
