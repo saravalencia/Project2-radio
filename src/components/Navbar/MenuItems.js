@@ -16,7 +16,7 @@
     {   
         icon: <i class="fas fa-grin-tongue"></i>,
         title: 'About Us',
-        url:'#',
+        url:'/about',
         cName: 'nav-links',
     },
     {   
