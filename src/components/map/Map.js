@@ -16,11 +16,13 @@ import './map.css';
     .then(response => response.json())
     .then(data => {
       setCountry(data)
-      setApiloaded(true)
+      setApiloaded(true)     
     }) 
   }
 
   let [apiloaded, setApiloaded] = useState(false)
+
+
 
 
 
@@ -67,20 +69,19 @@ polygonTemplate.events.on('hit', function (e)  {
 
     return (
       <div className="container">
-
+         
       <div id = "chartdiv" className="chartdiv">
       </div>
-      <div> 
+      <div className=""> 
           {
             apiloaded &&
             <div>
               {
-                country.map(countrys => <h1>{countrys.name}</h1>
-                )
+                country.sort((a,b) => b.votes - a.votes ).slice(0,5).map(countrys => <h1>{countrys.name}</h1>)
               }
               </div>
           }
-          </div>  
+          </div>
       </div>
     );
   
