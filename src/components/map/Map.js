@@ -69,19 +69,21 @@ polygonTemplate.events.on('hit', function (e)  {
 
     return (
       <div className="container">
-         
-      <div id = "chartdiv" className="chartdiv">
-      </div>
+      
       <div className=""> 
           {
             apiloaded &&
-            <div>
+            <div >
               {
-                country.sort((a,b) => b.votes - a.votes ).slice(0,5).map(countrys => <h1>{countrys.name}</h1>)
+                country.sort((a,b) => b.votes - a.votes ).slice(0,5).map(countrys=> <ul><img src={countrys.favicon}/><a href={countrys.url}>{countrys.name}</a></ul>)
               }
-              </div>
+            </div>
+              
           }
-          </div>
+      </div>  
+      <div id = "chartdiv" className="chartdiv">
+      </div>
+      
       </div>
     );
   
