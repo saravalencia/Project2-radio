@@ -20,7 +20,27 @@ import './map.css';
     }) 
   }
 
+  const play = () =>{
+    this.setCountry({
+      play: true,
+      pause: false
+    });
+    console.log(this.audio);
+    this.audio.play();
+  }
+
   let [apiloaded, setApiloaded] = useState(false)
+
+//Function controls
+
+
+  
+  
+ 
+
+
+
+
 
 
 
@@ -68,20 +88,43 @@ polygonTemplate.events.on('hit', function (e)  {
 // Create hover state and set alternative fill color
 
     return (
-      <div className="container">
-      
-      <div className=""> 
+      <div className="">
+      <div  className="container">
+      <div> 
           {
             apiloaded &&
             <div >
               {
-                country.sort((a,b) => b.votes - a.votes ).slice(0,5).map(countrys=> <ul><img src={countrys.favicon}/><a href={countrys.url}>{countrys.name}</a></ul>)
+                country.sort((a,b) => b.votes - a.votes ).slice(0,5).map(countrys=> <ul><img src={countrys.favicon}/><a href={countrys.url} onClick={play}>{countrys.name}</a></ul>)
               }
             </div>
               
           }
       </div>  
       <div id = "chartdiv" className="chartdiv">
+      </div>
+      </div>
+      <div className="controls">
+
+          <div className='vlmen'>
+            <span className="volum"><i class="fas fa-volume-down"></i> </span>
+            <input type="range" name="volBar" id="volbar"/>
+          </div>         
+                 
+          <div className="musicControls">
+                <span  className="prev"><i class="fas fa-step-backward"></i></span>
+                <span className="play"><i class="fas fa-play"></i></span>
+                <span  className="next"><i class="fas fa-step-forward"></i></span>
+                <span className="random"><i class="fas fa-random"></i> </span>
+                <span className="repeat"><i class="fas fa-redo-alt"></i> </span>                
+          </div>
+
+          <div className="progressb">
+            <span class="currenT"> 1:30</span>
+            <input type="range" name="progresBar" id="prgbar"/>
+            <span class="totalT">3:12</span>
+          </div>
+               
       </div>
       
       </div>
