@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
+import Player from './Player'
 import './map.css';
 
 /*[ISO2 country code] to find countrys by code*/
@@ -19,31 +20,9 @@ import './map.css';
       setApiloaded(true)     
     }) 
   }
-
-  const play = () =>{
-    this.setCountry({
-      play: true,
-      pause: false
-    });
-    console.log(this.audio);
-    this.audio.play();
-  }
+  
 
   let [apiloaded, setApiloaded] = useState(false)
-
-//Function controls
-
-
-  
-  
- 
-
-
-
-
-
-
-
 
 
 
@@ -86,48 +65,69 @@ polygonTemplate.events.on('hit', function (e)  {
 })
 
 // Create hover state and set alternative fill color
+let [valueRadio, setValueRadio] = useState("");
 
-    return (
-      <div className="">
-      <div  className="container">
-      <div> 
-          {
-            apiloaded &&
-            <div >
-              {
-                country.sort((a,b) => b.votes - a.votes ).slice(0,5).map(countrys=> <ul><img src={countrys.favicon}/><a href={countrys.url} onClick={play}>{countrys.name}</a></ul>)
-              }
-            </div>
-              
-          }
-      </div>  
-      <div id = "chartdiv" className="chartdiv">
-      </div>
-      </div>
-      <div className="controls">
+const [currentRadioIndex, setCurrentRadioIndex] = useState(0);
+  const [nextRadioIndex, setNextRadioIndex] = useState(0);
 
-          <div className='vlmen'>
-            <span className="volum"><i class="fas fa-volume-down"></i> </span>
-            <input type="range" name="volBar" id="volbar"/>
-          </div>         
-                 
-          <div className="musicControls">
-                <span  className="prev"><i class="fas fa-step-backward"></i></span>
-                <span className="play"><i class="fas fa-play"></i></span>
-                <span  className="next"><i class="fas fa-step-forward"></i></span>
-                <span className="random"><i class="fas fa-random"></i> </span>
-                <span className="repeat"><i class="fas fa-redo-alt"></i> </span>                
-          </div>
+  useEffect(() => {
+    setNextRadioIndex(() => {
+      if (currentRadioIndex + 1 > valueRadio.length - 1) {
+        return 0;
+      } else {
+        return currentRadioIndex + 1;
+      }
+    });
+  }, [currentRadioIndex]);
 
-          <div className="progressb">
-            <span class="currenT"> 1:30</span>
-            <input type="range" name="progresBar" id="prgbar"/>
-            <span class="totalT">3:12</span>
-          </div>
-               
-      </div>
-      
-      </div>
-    );
+
   
+
+return (
+  <>
+  <div className="containerAll">
+  { country ?
+      <>
+  <div className="RadioItemsContainer"> 
+      {
+        apiloaded &&
+        <div >
+          {
+            
+            country.filter((country) => country.codec === "MP3").sort((a,b) => b.votes - a.votes ).slice(0,10).map(countrys=> 
+              
+            <ul className='RadioList'>{<img className="img" src={countrys.favicon}/> }
+            <a className='nav-radio' href="#" onClick={() => setValueRadio(countrys.url_resolved)}  >{countrys.name}</a>
+            
+            </ul>
+           
+            )}
+        </div> 
+
+      }
+  </div> 
+  </> 
+  : ''
+  }
+  <div id = "chartdiv" className="chartdiv">
+  </div> 
+
+  </div>
+
+  <div className="controls">
+      <Player 
+        currentSongIndex={currentRadioIndex} 
+        setCurrentSongIndex={setCurrentRadioIndex} 
+        nextSongIndex={nextRadioIndex}
+        songs={valueRadio}
+        
+      />
+    </div>
+
+   
+</>
+
+
+);
+
 }
