@@ -4,3 +4,16 @@
   padding: 0;
   font-size: 'Poppins', sans-serif;
 } 
+
+.cards {
+  display: flex;
+  margin: 3%;
+}
+
+.page-container {
+  display: flex;
+}
+.content-wrap {
+  width: auto;
+  height: 5%;
+}

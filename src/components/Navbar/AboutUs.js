@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './AboutUs.css';
 
 const AboutUs = props => (
@@ -7,9 +6,11 @@ const AboutUs = props => (
         <h2 className="title">{props.title}</h2>
         <h3 className="subtitle">{props.subtitle}</h3>
         <p className="paragraf">{props.p}</p>
-
     </div>
 
 )
+
+
+
 
 export default AboutUs;
