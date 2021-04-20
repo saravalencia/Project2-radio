@@ -1,6 +1,6 @@
 import { arcToPoint } from '@amcharts/amcharts4/.internal/core/rendering/Path'
 import React from 'react'
-import './map.css'
+import './player.css'
 
 
 
@@ -17,14 +17,18 @@ function Controls(props) {
         }
 
         }      
-        function muted(){
+    
+    function muted(){
     if (props.isMuted){
         props.setIsMuted(false)
   
     }else {
         props.setIsMuted(true)
     }
-} 
+   } 
+   
+    
+
         
    
     return (
