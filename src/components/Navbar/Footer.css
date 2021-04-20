@@ -1,8 +1,89 @@
-.main-footer {
-    color: white;
-    background-color: rgba(rgb(214, 233, 42), green, blue, alpha);
-    padding-top: 3em;
+
+.footer{
+  background-color: rgb(232, 236, 236, .8);
+  color: black;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8%;
+}
+
+.footer svg {
+  margin: 1rem;
+}
+
+.footer ul {
+  list-style: none;
+  margin: 5%;
+}
+
+.footer li {
+  margin: 1rem;
+}
+
+.footer input, .footer textarea {
+  display: block;
+  border: 0px;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+.footer form {
+  margin: 1%!important;
+}
+
+.social-media{
+  text-align: center;
+  padding: 2rem;
+  font-size: 30px;
+  text-decoration: none;
+
+  justify-content: center;
+}
+
+#links {
+  text-align: left;
+}
+#contact {
+  text-align: center;
+}
+
+#contact form {
+  padding-left: 20%;
+}
+
+#contact div{
+  text-align: center;
+}
+
+
+.col-sm-4  {
+   position: inherit;
+    right: 3%;
+   }
+   
+   .contact {
+    font-size: 128%;
     position: relative;
-    bottom: 0;
-    width: 20%;
-  }
+    margin-top: 5%;
+    left: 3%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: inherit;
+}
+   
+.col-xs-12 {
+  position: relative;
+  left: 60%;
+}
+.inputsuscribe {
+  position: fixed;
+    left: 79%;
+    margin-top: 6px;
+    height: 4%;
+    border-radius: 30px;
+}
+

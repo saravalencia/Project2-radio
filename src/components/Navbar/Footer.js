@@ -1,36 +1,37 @@
 import React from 'react';
+import { FaBeer } from 'react-icons/fa';
 import './Footer.css';
 
 function Footer() {
     return(
-        <div className="main-footer">
+<footer className="footer">
+  <div className="container">
+    <div className="row">
+
+      <div className="social-media"> 
+        <center>Here is going the social media </center>
+      </div>
+
+      <div className="col-xs-12 col-sm-4" id="contact">
+        
+      <form action="contact.php" method="post">
         <div className="container">
           <div className="row">
-            {/* Column1 */}
-            <div className="social-media">
-              <h4>Follow us on the social media</h4>
-                <li></li>
-                <li></li>
-                <li></li>
+            <div className="col-xs-12">
+              <input className='inputsuscribe' id="email" type="email" name="email" placeholder="example@correo.com" required="" />
             </div>
-            {/* Column2 */}
-            <div className="contact">
-              <h4>Contact us</h4>
-              <ul className="contact-form">
-                <li>email</li>
-                <li>Message</li>
-              </ul>
-            </div>
-            
           </div>
-          <hr />
-         
         </div>
+        </form>
       </div>
+    </div>
+  </div>
+</footer>
     );
 
 
 
-}
+
+  }
 
 export default Footer;

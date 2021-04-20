@@ -10,10 +10,6 @@
   margin: 3%;
 }
 
-.page-container {
-  display: flex;
-}
-.content-wrap {
-  width: auto;
-  height: 5%;
+.footer {
+  height: 40px;
 }
