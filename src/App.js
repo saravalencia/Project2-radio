@@ -21,13 +21,13 @@ function App()  {
         <Route path="/discover">
         <Navbar />
         "Discover components go here."
-        <Footer />
+        <player />
         </Route>
 
         <Route path="/favourites">
         <Navbar />
         "Favourites components go here."
-        <Footer />
+        <player />
         </Route>
         
         <Route path="/about">
@@ -51,6 +51,7 @@ function App()  {
             
             title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C4D03AQE61frc8lNsXg/profile-displayphoto-shrink_400_400/0/1569238818077?e=1624492800&v=beta&t=UEOiuY0DgwU7MwyhNxuoR7v6zN28l1b4Imodj-DppCg" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title"/>
          </div>
+         <player />
          <Footer />
         </Route>
         
