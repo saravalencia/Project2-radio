@@ -1,0 +1,121 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* MENU */
+
+.RadioItemsContainer {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 200px;
+  display:flex;
+  background: #0e0233;
+  left: 0;
+  transition: all 0.5 ease;
+  margin-left: 0px;
+  z-index: 1;
+  padding: 1rem;
+ 
+} 
+
+.RadioItemsHidden {
+  display: none;
+ 
+}    
+
+.RadioList { 
+
+text-align: center;
+align-items: center;
+width: 200px;   
+background: #0e0233;
+padding-right: 1rem;
+margin-top: 1rem;
+
+} 
+
+a.nav-radio {
+  font-size:1.2rem;
+  color:white;
+  margin-top: 2rem;
+
+  text-decoration: none;
+  list-style: none;
+  margin: 10px;
+
+}
+
+.li-radios {
+  padding-top: 2rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  list-style: none;
+}
+
+.img{
+   width:20px;
+   height:20px;
+   position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 1%;
+}
+
+@media screen and (max-width: 700px) {
+
+.RadioItemsContainer{
+
+  width: 100px;
+
+}
+.img {
+  display:none;
+}
+.RadioList { 
+
+  text-align: center;
+   align-items: center;
+   width: 100px;   
+   background: #0e0233;
+   padding-right: 1rem;
+   margin-top: 1rem;
+   
+   
+   } 
+
+}

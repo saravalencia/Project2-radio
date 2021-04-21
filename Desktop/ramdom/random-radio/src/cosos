@@ -1,0 +1,50 @@
+ //let [apiloaded, setApiloaded] = useState(false)
+
+
+data.filter((filterRadio) => filterRadio.codec === "MP3").sort((a,b) => b.votes - a.votes).slice(0,10).map((getUrl, index) => getUrl)
+
+ {/* {
+          apiloaded &&
+              url.map((datas, index) => {
+              <ul key={index}>{<img src={datas.favicon} alt="af"/> }
+                <li onClick={() => datas.url_resolve}>
+                  {url}
+                </li>
+              </ul>  
+          
+              }
+                                    
+           
+              )
+            
+            
+          } */}
+
+
+
+          { url ?
+        <>
+        <div>
+
+          {
+            apiloaded &&
+              <div>
+              {
+                url.map((datas, index) => 
+                <ul key={index}>{<img src={datas.favicon} alt="" /> }
+                <li onClick={() => datas.url_resolve}>
+                  {datas.url}
+                </li>
+                </ul>                                   
+           
+              )}
+            </div>
+        
+          }
+</div>
+<>
+: ''
+        }
+        
+       <div>
+           </div>
