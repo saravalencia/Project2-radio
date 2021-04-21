@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar'
 import './App.css';
 import Map from './components/map/Map'; 
 import MenuRadio from './components/menuRadio/MenuRadio'
-import {Player} from './components/player/Player'
+import Player from './components/player/Player'
 import './components/map/map.css'
 
 

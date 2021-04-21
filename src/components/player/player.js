@@ -4,7 +4,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import './player.css'
 
 
- export const Player = (props) => (
+ const Player = (props) => (
   <div className="controls">
     
   <AudioPlayer
@@ -17,3 +17,5 @@ import './player.css'
    
 </div>
 );
+
+export default Player;
