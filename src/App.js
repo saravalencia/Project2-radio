@@ -4,7 +4,7 @@ import './App.css';
 import Map from './components/map/Map'; 
 import MenuRadio from './components/menuRadio/MenuRadio'
 import Player from './components/player/Player'
-import './components/map/map.css'
+import {CSSTransition} from 'react-transition-group'
 
 
 function App() {
@@ -39,15 +39,22 @@ function App() {
     <div className="App">
       
       <Navbar/>
+
       <div className='containerAll'>
       {
         apiloaded &&
-       
+       <CSSTransition
+        timeout={30000}
+        in={true}
+        appear={true}
+        classNames="transition" >
+
           <MenuRadio 
           getRadio={getRadio}
           countryRadio={countryRadio} 
           />
-     }
+  </CSSTransition>
+     } 
       <Map 
       getCountryCode={getCountryCode}
       />

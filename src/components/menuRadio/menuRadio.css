@@ -15,9 +15,17 @@
     margin-left: 0px;
     z-index: 1;
     padding: 1rem;
-  
-    
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
+.RadioItemsContainer:hover,
+.RadioItemsContainer:focus {
+  
+  background-color: #4a3686;
+}
+
+
+
+
 
 
 .RadioList { 
@@ -28,7 +36,8 @@ width: 200px;
 background: #0e0233;
 padding-right: 1rem;
 margin-top: 1rem;
-transition: all 0.5s ease;
+
+
 
 } 
 
@@ -36,20 +45,14 @@ li.nav-radio {
     font-size: 1.5rem;
     color:#e0ffdd;
     margin-top: 2rem;
-  
     text-decoration: none;
     list-style: none;
     margin: 10px;
     cursor: pointer;
-
+  
 }
 
-.li-radios {
-    padding-top: 2rem;
-    margin-top: 1rem;
-    text-decoration: none;
-    list-style: none;
-}
+
 
 .img{
      width:20px;
