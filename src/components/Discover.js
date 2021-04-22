@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React/*, { useState }*/ from "react";
 
-const ListStationTest = () => {
+const Discover = (props) => {
 
 
   return (
@@ -16,8 +16,12 @@ const ListStationTest = () => {
           type="audio/mpeg"
         ></source>
       </audio>
+
+      <h2>Station dinamic</h2>
+      <button onClick={props.getData}>Give me another random radio to listen to</button>
+
     </div>
   );
 };
 
-export default ListStationTest;
+export default Discover;
