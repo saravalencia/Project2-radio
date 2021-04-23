@@ -6,16 +6,10 @@ const Discover = (props) => {
   return (
     <div className="App">
 
-      <h2>Station static</h2>
+      {/*<h2>Station static</h2>
       <audio controls autoplay name="media">
         <source src="https://stream.iceradio.nl/iceradiohq?ver=30283"></source>
-      </audio>
-      <audio controls autoplay name="media">
-        <source
-          src="https://stream.iceradio.nl/iceradiohq?ver=30283"
-          type="audio/mpeg"
-        ></source>
-      </audio>
+      </audio>*/}
 
       <h2>Station dinamic</h2>
       <button onClick={props.getData}>Give me another random radio to listen to</button>

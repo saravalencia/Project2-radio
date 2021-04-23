@@ -1,5 +1,5 @@
 import React, {useState, useRef/*, useEffect*/} from 'react'
-/*import Controls from './Controls';*/
+import Controls from './Controls';
 import ReactAudioPlayer from 'react-audio-player';
 import './player.css'
 
@@ -11,20 +11,20 @@ function Player(props) {
 
   return (
       <div className="c-player">
-          {/*<audio src={props.chosenRadioRandom} autoPlay muted={isMuted} ref={audioEl}></audio>
+          <audio src={props.chosenRadioRandom} autoPlay muted={isMuted} ref={audioEl}></audio>
           <Controls 
           setIsMuted={setIsMuted} 
           isMuted={isMuted} 
           audioEl={audioEl} 
           isPlaying={isPlaying} 
           setIsPlaying={setIsPlaying}
-          />*/}
+          />
 
-<ReactAudioPlayer
+{/*<ReactAudioPlayer
       src={props.chosenRadioRandom}
       autoPlay
       controls
-/>
+/>*/}
 
       </div>
   )
