@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import Navbar from './components/Navbar/Navbar'
 import './App.css';
 import Map from './components/map/Map'; 
-import MenuRadio from './components/menuRadio/MenuRadio'
+//import MenuRadio from './components/menuRadio/MenuRadio'
 import Player from './components/player/Player'
-import {CSSTransition} from 'react-transition-group'
+import AboutUs from './components/aboutUs/AboutUs'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
 function App() {
@@ -38,35 +39,50 @@ function App() {
   return (
     
     <div className="App">
-      
+      <BrowserRouter>
       <Navbar/>
+      
+      <Switch>      
+      <Route exact path="/country" exact>        
+            
+            <Map 
+              getCountryCode={getCountryCode}
+              getRadio={getRadio}
+              countryRadio={countryRadio}
+              apiloaded={apiloaded}
+              />            
+                 
+      </Route>
 
-      <div className="container-menu-map">
-       
-      <Map 
-      setBottomPopUp={setBottomPopUp}
-      getCountryCode={getCountryCode}
-      />
-      {
-        apiloaded &&
-       <CSSTransition
-        timeout={30000}
-        in={true}
-        appear={true}
-        classNames="transition" >
+      <Route exact path="/aboutUs">
+    
+            <AboutUs  />           
+                      
+      </Route>
 
-          <MenuRadio 
-          trigger={bottomPopUp}
-          setBottomPopUp={setBottomPopUp}
-          getRadio={getRadio}
-          countryRadio={countryRadio}
-          />
-  </CSSTransition>
-     }
-  </div>
-   <Player 
-      valueRadio={valueRadio}
-      />
+      <Route exact path="/favorites">
+    
+            <h1>FAVORITES</h1>          
+                      
+      </Route>
+      <Route exact path="/">        
+                    
+              <Map 
+              getCountryCode={getCountryCode}
+              getRadio={getRadio}
+              countryRadio={countryRadio}
+              apiloaded={apiloaded}
+              />
+                 
+      </Route>
+      </Switch> 
+      <Player 
+          valueRadio={valueRadio}
+      />     
+      </BrowserRouter>
+    
+
+      
     </div>
   );
 }

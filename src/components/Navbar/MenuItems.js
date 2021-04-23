@@ -7,13 +7,7 @@
         url:"/country",
         cName: 'nav-links',
     },
-    {   
-     
-        icon: <i className="fas fa-music"></i>,
-        title: 'Discover',
-        url: "/discover",
-        cName: 'nav-links',
-    },
+    
     {   
         icon: <i className="fas fa-grin-tongue"></i>,
         title: 'About Us',

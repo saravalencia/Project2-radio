@@ -20,9 +20,10 @@ function MenuRadio(props){
 
          
   <div className="container-popUp"> 
-      
-        <button className="btn-cl-pop" onClick={()=> props.setBottomPopUp(false)}>X</button>
-      
+      <div className="container-radios">
+        <div className="btn-cl-pop">
+            <button  onClick={()=> props.setBottomPopUp(false)}>X</button>
+        </div>
            
       
       {
@@ -39,7 +40,7 @@ function MenuRadio(props){
          
           )}
     
-      
+    </div>
   </div> 
  
  
