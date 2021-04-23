@@ -5,6 +5,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AboutUs from './components/Navbar/AboutUs';
 import Cards from './components/Navbar/Cards';
 import Footer from './components/Navbar/Footer';
+import Player from './components/repro/Player'
+import Favourites from './components/Navbar/Favourites';
 
 
 function App()  {
@@ -26,6 +28,7 @@ function App()  {
 
         <Route path="/favourites">
         <Navbar />
+        <Favourites valueRadio={"pizza"} />
         "Favourites components go here."
         <Player />
         </Route>
@@ -37,7 +40,7 @@ function App()  {
             <div className="cards">
             <Cards 
             
-            title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C4D35AQHnvSJwk2WnYQ/profile-framedphoto-shrink_400_400/0/1616751288915?e=1619020800&v=beta&t=AYiQipCV-EO4M9iAYKluWOGJiAKEi9C3CuRrgZxro9o" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title"/>
+            title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C4D35AQHnvSJwk2WnYQ/profile-framedphoto-shrink_400_400/0/1616751288915?e=1619110800&v=beta&t=aklksuc0jTWkuydOQnN0dOESuS6VuSJ3ajrzMuQAjjQ" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title"/>
                         
             <Cards 
             
@@ -51,7 +54,6 @@ function App()  {
             
             title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C4D03AQE61frc8lNsXg/profile-displayphoto-shrink_400_400/0/1569238818077?e=1624492800&v=beta&t=UEOiuY0DgwU7MwyhNxuoR7v6zN28l1b4Imodj-DppCg" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title"/>
          </div>
-         <Player />
          <Footer />
         </Route>
         
