@@ -83,7 +83,9 @@ return (
     trigger={bottomPopUp}
     setBottomPopUp={setBottomPopUp}
     getRadio={props.getRadio}
-    countryRadio={props.countryRadio} />
+    countryRadio={props.countryRadio}
+    addFavorites={props.addFavorites}
+    />
   }
   
   </div>

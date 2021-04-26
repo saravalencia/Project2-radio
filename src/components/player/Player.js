@@ -23,6 +23,8 @@ function Player(props) {
           setIsPlaying={setIsPlaying}
           isCurrentRadio={isCurrentRadio}
           setIsCurrentRadio={setIsCurrentRadio}
+          //getbackwars={props.getbackwars}
+          nextRadioIndex={props.nextRadioIndex}
           />
           
       </div>

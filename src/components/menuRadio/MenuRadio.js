@@ -34,7 +34,7 @@ function MenuRadio(props){
           <a  className='a-radio' onClick={() => props.getRadio(countrys.url_resolved)}>
           {countrys.name}
           </a>
-          <button className="button-favorites">+</button>          
+          <button className="button-favorites" onChange={e => props.addFavorites(e.target.value)}>+</button>          
           </div>
           
          
