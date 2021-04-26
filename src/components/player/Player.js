@@ -9,12 +9,14 @@ function Player(props) {
   const [isMuted, setIsMuted] = useState(false);
   const [isCurrentRadio, setIsCurrentRadio] = useState(isPlaying);
 
-
  
+
   return (
       <div className="c-player">
+
           <audio src={props.valueRadio} autoPlay  muted={isMuted} ref={audioEl}></audio>
           <Controls 
+          getNewRandomRadio={props.getNewRandomRadio}
           setIsMuted={setIsMuted} 
           isMuted={isMuted} 
           setIsMuted={setIsMuted}
