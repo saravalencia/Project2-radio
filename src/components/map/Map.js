@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import MenuRadio from '../menuRadio/MenuRadio'
@@ -11,16 +11,7 @@ import './map.css';
 
 function Map(props) {
 
-  /*let [country, setCountry] = useState('')
   
-  const getData = (countryCode) => {
-    fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
-    .then(response => response.json())
-    .then(data => {
-      setCountry(data)
-      setApiloaded(true)     
-    }) 
-  }*/
   
   let [bottomPopUp,setBottomPopUp] = useState(false)
   

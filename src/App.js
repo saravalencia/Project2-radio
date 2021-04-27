@@ -14,14 +14,19 @@ function App() {
   let [valueRadio, setValueRadio] = useState("");
   let [apiloaded, setApiloaded] = useState("")
   let [bottomPopUp,setBottomPopUp] = useState(false)
-  const [stations, setStations] = useState(false);
-  const [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
+  let [stations, setStations] = useState(false);
+  let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
+  let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
   
+  
+
+
   const getData = (countryCode) => {
     fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
     .then(response => response.json())
     .then(data => {
-      setCountryRadio(data)
+      setCountryRadio(data.filter((country) => country.codec === "MP3").sort
+    ((a,b) => b.votes - a.votes ).slice(0,10))
       setApiloaded(true)     
     }) 
   }
@@ -31,11 +36,14 @@ function App() {
     getData(selectedCountry)
   }
 
-  const getRadio = (selectedRadio) => {
+  const getRadio = (selectedRadio, index) => {
     setValueRadio(selectedRadio)
+    console.log(index)
+    setCurrentCountryRadioIndex(index)
+    
   }
-
-
+ 
+  
 
   const getNewRandomRadio = () => {
   
@@ -47,10 +55,23 @@ function App() {
     
   }
 
- //unir boton random a 
 
+  const playNextRadio = () => {
+    
+   
+   if (currentCountryRadioIndex === 9 ) {
+     setCurrentCountryRadioIndex(0);
+     setValueRadio(countryRadio[0].url)
+   } else {
+     console.log(countryRadio[currentCountryRadioIndex + 1].url)
+    
+    setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
+    setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
+   }
+    
+  }
 
-const getData2 = () => {
+const getDataRandom = () => {
      
     fetch("https://de1.api.radio-browser.info/json/stations")
       .then((response) => response.json())
@@ -62,7 +83,7 @@ const getData2 = () => {
 
 
       useEffect (() => {
-        getData2()
+        getDataRandom()
         
       }, []);
   
@@ -108,6 +129,8 @@ const getData2 = () => {
       </Route>
       </Switch> 
       <Player 
+
+          playNextRadio={playNextRadio}
           getNewRandomRadio={getNewRandomRadio}
           valueRadio={valueRadio}
       />     
