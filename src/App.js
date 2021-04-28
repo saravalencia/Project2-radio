@@ -13,7 +13,6 @@ function App() {
   let [country, setCountry] = useState('')
   let [valueRadio, setValueRadio] = useState("");
   let [apiloaded, setApiloaded] = useState("")
-  let [bottomPopUp,setBottomPopUp] = useState(false)
   let [stations, setStations] = useState(false);
   let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
@@ -71,6 +70,21 @@ function App() {
     
   }
 
+  const playPreviousRadio = () => {
+    
+   
+    if (currentCountryRadioIndex === 9 ) {
+      setCurrentCountryRadioIndex(0);
+      setValueRadio(countryRadio[0].url)
+    } else {
+      console.log(countryRadio[currentCountryRadioIndex - 1].url)
+     
+     setValueRadio(countryRadio[currentCountryRadioIndex - 1].url);
+     setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
+    }
+     
+   }
+
 const getDataRandom = () => {
      
     fetch("https://de1.api.radio-browser.info/json/stations")
@@ -98,6 +112,7 @@ const getDataRandom = () => {
       <Route exact path="/country" exact>        
             
             <Map 
+
               getCountryCode={getCountryCode}
               getRadio={getRadio}
               countryRadio={countryRadio}
@@ -129,7 +144,7 @@ const getDataRandom = () => {
       </Route>
       </Switch> 
       <Player 
-
+          playPreviousRadio={playPreviousRadio}
           playNextRadio={playNextRadio}
           getNewRandomRadio={getNewRandomRadio}
           valueRadio={valueRadio}

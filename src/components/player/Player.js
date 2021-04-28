@@ -16,6 +16,7 @@ function Player(props) {
 
           <audio src={props.valueRadio} autoPlay  muted={isMuted} ref={audioEl}></audio>
           <Controls 
+          playPreviousRadio={props.playPreviousRadio}
           playNextRadio={props.playNextRadio}
           getNewRandomRadio={props.getNewRandomRadio}
           setIsMuted={setIsMuted} 

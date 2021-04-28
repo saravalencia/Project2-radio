@@ -21,6 +21,7 @@ function MenuRadio(props){
       {
           
          props.countryRadio.map((countrys, index)=> 
+         
            <div className="container-all-radios mov-radios"> 
           {<img className="img" src={countrys.favicon}/> }
           <a  className='a-radio' onClick={() => props.getRadio(countrys.url_resolved, index)}>

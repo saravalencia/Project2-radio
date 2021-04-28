@@ -38,17 +38,13 @@ function Controls(props) {
           </div>         
                  
           <div className="musicControls">
-                <span  className="prev" onClick=''><i class="fas fa-step-backward"></i></span>
+                <span  className="prev" onClick={props.playPreviousRadio}><i class="fas fa-step-backward"></i></span>
                 <span className="play" onClick={accion}><i class={props.isPlaying ? "fas fa-pause" : "fas fa-play"}></i></span>
                 <span  className="next" onClick= {props.playNextRadio}><i class="fas fa-step-forward"></i></span>
                 <span className="random" onClick={props.getNewRandomRadio}><i class="fas fa-random"></i> </span>                    
           </div>
 
-          {/* <div className="progressb">
-            <span class="currenT"> 1:30</span>
-            <input type="range" name="progresBar" id="prgbar"/>
-            <span class="totalT">3:12</span>
-          </div> */}
+         
         </div>
     )
 }
