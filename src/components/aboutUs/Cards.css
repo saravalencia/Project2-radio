@@ -1,0 +1,27 @@
+.card-containers{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 42px 0 42px;
+}
+
+.card-container{
+    width: 244px;
+}
+
+
+.image-container img {
+    overflow: hidden;
+    height: 171px;
+    border-radius: 7%;
+    display: block;
+    margin: auto;
+}
+
+.card-content h3{
+    text-align: center;
+}
+.card-title{
+    margin-bottom: 0.5rem;
+}
+

@@ -7,5 +7,6 @@
 
 .container-menu-map {
   display: flex; 
+  margin-bottom: 10px;
 }
 

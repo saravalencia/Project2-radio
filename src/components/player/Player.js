@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef} from 'react'
 import Controls from './Controls';
 import './player.css'
 
@@ -15,9 +15,11 @@ function Player(props) {
       <div className="c-player">
           <audio src={props.valueRadio} autoPlay  muted={isMuted} ref={audioEl}></audio>
           <Controls 
+          playPreviousRadio={props.playPreviousRadio}
+          playNextRadio={props.playNextRadio}
+          getNewRandomRadio={props.getNewRandomRadio}
           setIsMuted={setIsMuted} 
           isMuted={isMuted} 
-          setIsMuted={setIsMuted}
           audioEl={audioEl} 
           isPlaying={isPlaying} 
           setIsPlaying={setIsPlaying}
