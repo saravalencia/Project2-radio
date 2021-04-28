@@ -1,6 +1,7 @@
-import { arcToPoint } from '@amcharts/amcharts4/.internal/core/rendering/Path'
+
 import React from 'react'
 import './player.css'
+import defaultImage from '../menuRadio/defaultImage.jpg'
 
 
 
@@ -27,7 +28,9 @@ function Controls(props) {
     }
    } 
    
-   
+   const setDefaultSrc = (event) => {
+    event.target.src = defaultImage;
+}
   
    
     return (
@@ -43,7 +46,16 @@ function Controls(props) {
                 <span  className="next" onClick= {props.playNextRadio}><i class="fas fa-step-forward"></i></span>
                 <span className="random" onClick={props.getNewRandomRadio}><i class="fas fa-random"></i> </span>                    
           </div>
-
+        <div className='name-country-radio'>
+            
+         
+        <h3 className='radio-name'>{props.randomRadio.name} </h3>
+        
+        <h3 className='country-name'>{props.randomRadio.country}</h3> 
+        <img className="image-player" src={props.randomRadio.favicon}  onError={setDefaultSrc}/>
+      
+      
+        </div>
          
         </div>
     )

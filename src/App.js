@@ -16,15 +16,15 @@ function App() {
   let [stations, setStations] = useState(false);
   let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
+ 
   
-  
-
+  console.log(randomRadio)
 
   const getData = (countryCode) => {
     fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
     .then(response => response.json())
     .then(data => {
-      setCountryRadio(data.filter((country) => country.codec === "MP3").sort
+      setCountryRadio(data.filter((country) => country.codec === "MP3" || country.codec === "OGG").sort
     ((a,b) => b.votes - a.votes ).slice(0,10))
       setApiloaded(true)     
     }) 
@@ -148,6 +148,8 @@ const getDataRandom = () => {
           playNextRadio={playNextRadio}
           getNewRandomRadio={getNewRandomRadio}
           valueRadio={valueRadio}
+          countryRadio={countryRadio}
+          randomRadio={randomRadio}
       />     
       </BrowserRouter>
     

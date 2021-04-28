@@ -27,6 +27,9 @@ function Player(props) {
           setIsPlaying={setIsPlaying}
           isCurrentRadio={isCurrentRadio}
           setIsCurrentRadio={setIsCurrentRadio}
+          countryRadio={props.countryRadio}
+          randomRadio={props.randomRadio}
+          valueRadio={props.valueRadio}
           />
           
       </div>
