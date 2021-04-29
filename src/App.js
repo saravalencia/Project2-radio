@@ -114,8 +114,8 @@ const getDataRandom = () => {
       
       <Switch>      
       <Route exact path="/country" exact>        
-            
-            <Map 
+           <div className="container-menu-map">
+             <Map 
               getCountryCode={getCountryCode}
               getRadio={getRadio}
               countryRadio={countryRadio}
@@ -130,7 +130,10 @@ const getDataRandom = () => {
               setBottomPopUp={setBottomPopUp}
               getRadio={getRadio}
               countryRadio={countryRadio} />
-              }         
+              } 
+             
+           </div> 
+                    
                  
       </Route>
 

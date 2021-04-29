@@ -11,9 +11,9 @@ import './map.css';
 
 function Map(props) {
 
-  //let [bottomPopUp,setBottomPopUp] = useState(false)
+  // let [show,setShow] = useState(false)
 
-  
+  // const closeModalHandler = () => setShow(false)
 
   
 
@@ -68,15 +68,11 @@ polygonTemplate.fill = am4core.color("#4040CE");
 return (
  
 
-  <div className="container-menu-map">
+ 
     <div id = "chartdiv" className="chartdiv">
   </div>
-
-
-  </div>
-
+ 
 );
 }
 
 export default Map;
- 

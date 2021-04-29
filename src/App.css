@@ -5,8 +5,9 @@
   font-size: 'Poppins', sans-serif;
 } 
 
-/* .container-menu-map {
-  display: flex; 
-  margin-bottom: 10px;
-} */
+ .container-menu-map {
+  width: 100%;
+  height: 621px;
+  position: relative;
+} 
 
