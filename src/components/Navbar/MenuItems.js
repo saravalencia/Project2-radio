@@ -4,7 +4,7 @@
     {   
         icon: <i className="fas fa-globe-americas"></i>,
         title: 'Country',
-        url:"/country",
+        url:"/",
         cName: 'nav-links',
     },
     

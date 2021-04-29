@@ -62,8 +62,6 @@ function App() {
      setCurrentCountryRadioIndex(0);
      setValueRadio(countryRadio[0].url)
    } else {
-     console.log(countryRadio[currentCountryRadioIndex + 1].url)
-    
     setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
     setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
    }
@@ -109,7 +107,7 @@ const getDataRandom = () => {
       <Navbar/>
       
       <Switch>      
-      <Route exact path="/country" exact>        
+      <Route exact path="/" exact>        
             
             <Map 
 
@@ -132,16 +130,7 @@ const getDataRandom = () => {
             <h1>FAVORITES</h1>          
                       
       </Route>
-      <Route exact path="/">        
-                    
-              <Map 
-              getCountryCode={getCountryCode}
-              getRadio={getRadio}
-              countryRadio={countryRadio}
-              apiloaded={apiloaded}
-              />
-                 
-      </Route>
+     
       </Switch> 
       <Player 
           playPreviousRadio={playPreviousRadio}
