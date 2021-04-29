@@ -5,26 +5,27 @@ import './player.css'
 
 function Player(props) {
   const audioEl = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [isCurrentRadio, setIsCurrentRadio] = useState(isPlaying);
-
 
  
   return (
       <div className="c-player">
           <audio src={props.valueRadio} autoPlay  muted={isMuted} ref={audioEl}></audio>
-          <Controls 
+          <Controls
+          playPreviousRadio={props.playPreviousRadio}
+          playNextRadio={props.playNextRadio}
+          getNewRandomRadio={props.getNewRandomRadio}
           setIsMuted={setIsMuted} 
           isMuted={isMuted} 
-          setIsMuted={setIsMuted}
           audioEl={audioEl} 
-          isPlaying={isPlaying} 
-          setIsPlaying={setIsPlaying}
+          isPlaying={props.isPlaying} 
+          setIsPlaying={props.setIsPlaying}
           isCurrentRadio={isCurrentRadio}
           setIsCurrentRadio={setIsCurrentRadio}
-          //getbackwars={props.getbackwars}
-          nextRadioIndex={props.nextRadioIndex}
+          country={props.country}
+          randomRadio={props.randomRadio}
           />
           
       </div>

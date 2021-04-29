@@ -228,3 +228,7 @@ input[type=range] {
 
 
   }
+
+.name-country-radio{
+  display: flex;
+}

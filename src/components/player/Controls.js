@@ -26,17 +26,9 @@ function Controls(props) {
         props.setIsMuted(true)
     }
    } 
+ 
    
-   function nextRadioIndex(valueRadio){
-    if (props.valueRadio + 1 > props.valueRadio - 1) {
-      return 0;
-    } else {
-      return props.valueRadio + 1;
-    }
-  };
-
-   
-  
+      
    
     return (
         <div className="controls">
@@ -46,10 +38,15 @@ function Controls(props) {
           </div>         
                  
           <div className="musicControls">
-                <span  className="prev" onClick={nextRadioIndex}><i class="fas fa-step-backward"></i></span>
+                <span  className="prev" onClick={props.playPreviousRadio}><i class="fas fa-step-backward"></i></span>
                 <span className="play" onClick={accion}><i class={props.isPlaying ? "fas fa-pause" : "fas fa-play"}></i></span>
-                <span  className="next" onClick=''><i class="fas fa-step-forward"></i></span>
-                <span className="random" onClick=''><i class="fas fa-random"></i> </span>                    
+                <span  className="next" onClick={props.playNextRadio}><i class="fas fa-step-forward"></i></span>
+                <span className="random" onClick={props.getNewRandomRadio}><i class="fas fa-random"></i></span>
+                                    
+          </div>
+          <div className="name-country-radio">
+          <h3>Random Radio name: {props.randomRadio.name} from </h3>
+          <h3>{props.randomRadio.country}</h3>
           </div>
 
           {/* <div className="progressb">

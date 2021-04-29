@@ -1,47 +1,43 @@
 import React from 'react'
+import defaultImage from './defaultImage.jpg'
 import './menuRadio.css'
 
 function MenuRadio(props){
 
-
-  /* Back-Next
-  
-  useEffect(() => {
-    setNextRadioIndex(() => {
-      if (currentRadioIndex + 1 > valueRadio.length - 1) {
-        return 0;
-      } else {
-        return currentRadioIndex + 1;
-      }
-    });
-  }, [currentRadioIndex]);*/
+  const setDefaultSrc = (event) => {
+    event.target.src = defaultImage;
+}
 
     return (props.trigger) ? (
 
-         
-  <div className="container-popUp"> 
-      <div className="container-radios">
-        <div className="btn-cl-pop">
-            <button  onClick={()=> props.setBottomPopUp(false)}>X</button>
-        </div>
-           
-      
+   <div className="container-popUp">
+
+<div className="modal-wrapper">       
+      <div className="modal-header">
+            <h1>TOP 10 RADIOS LIST</h1>
+            <spam  className="close-modal-btn" onClick={()=> props.setBottomPopUp(false)}>X</spam>
+      </div>
+      <div className="modal-content">
       {
           
-          props.countryRadio.filter((country) => country.codec === "MP3").sort((a,b) => b.votes - a.votes ).slice(0,10).map((countrys)=> 
-           <div className="container-all-radios mov-radios"> 
-          {<img className="img" src={countrys.favicon}/> }
-          <a  className='a-radio' onClick={() => props.getRadio(countrys.url_resolved)}>
-          {countrys.name}
-          </a>
-          <button className="button-favorites" onChange={e => props.addFavorites(e.target.value)}>+</button>          
+          props.countryRadio.map((countrys, index)=> 
+
+          <div key={index} className="modal-body"> 
+          {<a onClick={() => props.getRadio(countrys.url_resolved)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
+          <p className='a-radio' onClick={() => props.getRadio(countrys.url_resolved, index)}>
+          {countrys.name}  
+          </p>                
           </div>
           
          
-          )}
-    
+          )}  
+      </div>       
+        
     </div>
-  </div> 
+
+
+   </div>      
+   
  
  
     ) : "";
@@ -51,3 +47,63 @@ function MenuRadio(props){
 }
 
 export default MenuRadio;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from 'react'
+// import './menuRadio.css'
+
+// function MenuRadio(props){
+
+
+
+//     return (
+        
+//   <div className="modal-wrapper"
+//   style= {{
+//     opacity: props.show ? '1' : '0'
+//   }}>       
+//       <div className="modal-header">
+//         <h1> RADIOS LIST</h1>
+//         <span className="close-modal-btn">X</span>
+//       </div>
+//       <div className="modal-content">
+//       {
+          
+//           props.countryRadio.map((countrys, index)=> 
+
+//           <div key={index} className="container-all-radios mov-radios"> 
+//           {<img className="img" alt="favicon" src={countrys.favicon}/> }
+//           <p className='a-radio' onClick={() => props.getRadio(countrys.url_resolved, index)}>
+//           {countrys.name}
+//           </p>
+        
+//           </div>
+          
+         
+//           )}
+//       </div>
+
+//   </div> 
+ 
+ 
+//     );
+
+
+
+// };
+
+// export default MenuRadio;
