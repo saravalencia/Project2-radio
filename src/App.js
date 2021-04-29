@@ -1,66 +1,143 @@
-import Navbar from './components/Navbar/Navbar';
+import React, {useState, useEffect} from 'react';
+import Navbar from './components/Navbar/Navbar'
 import './App.css';
-import {Map} from './components/map/Map';
+import Map from './components/map/Map'; 
+//import MenuRadio from './components/menuRadio/MenuRadio'
+import Player from './components/player/Player'
+import AboutUs from './components/aboutUs/AboutUs'
+import Favorites from './components/favorites/Favorites'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import AboutUs from './components/Navbar/AboutUs';
-import Cards from './components/Navbar/Cards';
-import Footer from './components/Navbar/Footer';
-import Player from './components/repro/Player'
-import Favourites from './components/Navbar/Favourites';
+import {useLocalStorage} from './components/favorites/useLocalStorage'
 
 
-function App()  {
+function App() {
+  let [countryRadio, setCountryRadio] = useState('')
+  let [country, setCountry] = useState('')
+  let [valueRadio, setValueRadio] = useState("");
+  let [apiloaded, setApiloaded] = useState("")
+  //let [bottomPopUp,setBottomPopUp] = useState(false)
+  let [addFavorites, setAddFavorites] = useState([]);   //este de acá
+  //let favorites = valueRadio
+  //let [favorites, setFavorites] = 
+  //let [currentRadioIndex, setcurrentRadioIndex] = useState('')
 
-  return (
-    <div className="App">
-    <BrowserRouter>
-    <Switch>
-        <Route exact path="/">
-            <Navbar />
-            <Map />
-        </Route>
+  
+  const getData = (countryCode) => {
+    fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
+    .then(response => response.json())
+    .then(data => {
+      setCountryRadio(data)
+      setApiloaded(true)     
+    }) 
+  }
 
-        <Route path="/discover">
-        <Navbar />
-        "Discover components go here."
-        <Player />
-        </Route>
+  const getCountryCode = (selectedCountry) => {
+    setCountry(selectedCountry)
+    getData(selectedCountry)
+  }
 
-        <Route path="/favourites">
-        <Navbar />
-        <Favourites valueRadio={"pizza"} />
-        "Favourites components go here."
-        <Player />
-        </Route>
-        
-        <Route path="/about">
-            <Navbar />
-            <AboutUs title="The Radio APP" subtitle="The first Radio App that you can listen everywhere, it's here, it's possible!" p="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            />
-            <div className="cards">
-            <Cards 
-            
-            title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C4D35AQHnvSJwk2WnYQ/profile-framedphoto-shrink_400_400/0/1616751288915?e=1619110800&v=beta&t=aklksuc0jTWkuydOQnN0dOESuS6VuSJ3ajrzMuQAjjQ" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title"/>
-                        
-            <Cards 
-            
-            title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C5103AQHrtZnWekF-5A/profile-displayphoto-shrink_400_400/0/1517053091488?e=1624492800&v=beta&t=twg_gcQjkzslHEu3bMZtTQRvbsvRayrActKuU8YSEAQ" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title"/>
+  const getRadio = (selectedRadio) => {
+    setValueRadio(selectedRadio)
+    setAddFavorites(selectedRadio)
+  }
+  
+  const handleAddToFavorites = (radio) => {
+    console.log(radio);
+    //meterle a addFavorites "radio" como un nuevo elemento del array
+    //setAddFavorite([...addFavorites, radio])
 
-            <Cards 
-            
-            title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C4E03AQE0KUWGKGmhQg/profile-displayphoto-shrink_400_400/0/1517477429801?e=1624492800&v=beta&t=rz0WJzpeFt_WGQHxfvNF_T1ap2elFRW0Bi0iKIJ-o0k" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title" />
+  }
 
-            <Cards 
-            
-            title="Card title" imageUrl="https://media-exp1.licdn.com/dms/image/C4D03AQE61frc8lNsXg/profile-displayphoto-shrink_400_400/0/1569238818077?e=1624492800&v=beta&t=UEOiuY0DgwU7MwyhNxuoR7v6zN28l1b4Imodj-DppCg" body="Lorem ipsum dolor sit amet consectetur adipiscing elit varius, nunc mus facilisis libero at primis tortor ridiculus euismod, sodales feugiat sociosqu pulvinar lectus malesuada vitae."  title="Card title"/>
-         </div>
-         <Footer />
-        </Route>
-        
-        </Switch>
-        </BrowserRouter>
+
+
+  
+  //  function nextRadioIndex(){
+  //     if (currentRadioIndex + 1 > valueRadio.length - 1) {
+  //       return 0;
+  //     } else {
+  //       return currentRadioIndex + 1;
+  //     }
+  //   };
+  
+
+  // function getbackwars(){
+  //       currentSong(valueRadio.legth - 1)
+
+    // setCurrentSong(() => {
+    //   if (currentSong + 1 > valueRadio.length - 1) {
+    //     return 0;
+    //   } else {
+    //     return currentSong + 1;
+    //   }
+    // })
+  // } 
+  //
     
-        </div>
+  
+  // const setLocalStorage = value => {
+  //   try{
+  //     valueRadio(value)
+  //     window.localStorage.setItem("text", value)
+  //   } catch (error){
+  //     console.log(error)
+  //   }
+  // }
+
+
+  
+  return (
+    
+    <div className="App">
+      <BrowserRouter>
+      <Navbar/>
+      
+      <Switch>      
+      <Route exact path="/country" exact>        
+            
+            <Map 
+              getCountryCode={getCountryCode}
+              getRadio={getRadio}
+              countryRadio={countryRadio}
+              apiloaded={apiloaded}
+              addFavorites={addFavorites}
+              />            
+                 
+      </Route>
+
+      <Route exact path="/aboutUs">
+    
+            <AboutUs  />           
+                      
+      </Route>
+
+      <Route exact path="/favorites">
+    
+            <Favorites
+            valueRadio={valueRadio} />          
+                      
+      </Route>
+      <Route exact path="/">        
+                    
+              <Map 
+              getCountryCode={getCountryCode}
+              getRadio={getRadio}
+              countryRadio={countryRadio}
+              apiloaded={apiloaded}
+              />
+                 
+      </Route>
+      </Switch> 
+      <Player 
+          valueRadio={valueRadio}
+          handleAddToFavorites={handleAddToFavorites}
+          //getbackwars={getbackwars}
+         // nextRadioIndex={nextRadioIndex}
+      />     
+      </BrowserRouter>
+    
+
+      
+    </div>
   );
 }
 

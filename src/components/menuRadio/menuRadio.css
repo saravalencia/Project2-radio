@@ -1,0 +1,116 @@
+
+.container-popUp{
+    position: fixed;
+    width: 100%;
+    height: 62.5vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;   
+    }
+    
+    .btn-cl-pop{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: white;
+    background-color: #1d1b1b;
+    border-radius: 25px;
+    width: 27px;
+    height: 26px;
+   
+    }
+
+   .container-radios{
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+   } 
+    
+    .container-all-radios{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 30px; 
+    margin-bottom: 20px;   
+    }
+    
+    .a-radio {
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 50px;
+    } 
+    
+    .div-button{
+        height: auto;
+    }
+    
+    .img{
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    border: 3px solid white;
+    box-shadow: 0px 5px 17px rgb(0 0 0);
+    cursor: none;
+    transition: 0.5s ease-in-out;
+    }
+    
+    img:hover{
+     transform:scale(1.2);
+    }
+    .button-favorites{
+    background-color:  #1d1b1b;
+    width: 15px;
+    height: 15px;
+    color: white;
+    border-radius: 20pc;
+    font-family: fantasy;  
+    cursor: pointer;
+      
+    }
+    
+    @media screen and (max-width:766px){
+        img{
+            display: none;
+        }
+    
+        .container-popUp{
+            position: fixed;
+            width: 100%;
+            height: 75vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;    
+            }
+        .a-radio{
+            font-size: 10px;
+        }
+        .container-popUp .btn-cl-pop{
+            position: absolute;
+            top: 13px;
+            right: 13px;
+            color: white;
+            background-color: #1d1b1b;
+            border-radius: 25px;
+            top: 16px;
+            width: 27px;
+            height: 26px;
+            right: 16px;
+            }
+    
+        .mov-radios{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;    
+            }
+    }
+    
