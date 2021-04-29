@@ -112,61 +112,40 @@ const getDataRandom = () => {
       <BrowserRouter>
       <Navbar/>
       
-      <Switch>      
-      <Route exact path="/country" exact>        
-           <div className="container-menu-map">
-             <Map 
-              getCountryCode={getCountryCode}
-              getRadio={getRadio}
-              countryRadio={countryRadio}
-              apiloaded={apiloaded}
-              setBottomPopUp={setBottomPopUp}
-              />   
-              
-              {
-              apiloaded &&
-              <MenuRadio
-              trigger={bottomPopUp}
-              setBottomPopUp={setBottomPopUp}
-              getRadio={getRadio}
-              countryRadio={countryRadio} />
-              } 
-             
-           </div> 
-                    
-                 
-      </Route>
-
+      <Switch>
       <Route exact path="/aboutUs">
     
-            <AboutUs  />           
+          <AboutUs  />           
                       
       </Route>
 
       <Route exact path="/favorites">
     
-            <Favorites
+          <Favorites
             valueRadio={valueRadio} />          
                       
       </Route>
       <Route exact path="/">        
                  
-              <Map 
-              getCountryCode={getCountryCode}
-              getRadio={getRadio}
-              countryRadio={countryRadio}
-              apiloaded={apiloaded}
-              setBottomPopUp={setBottomPopUp}
-              />
-
-              {
-              apiloaded &&
-              <MenuRadio
-              trigger={bottomPopUp}
-              setBottomPopUp={setBottomPopUp}
-              getRadio={getRadio}
-              countryRadio={countryRadio} />
-              }
+      <div className="container-menu-map">
+          <Map 
+            getCountryCode={getCountryCode}
+            getRadio={getRadio}
+            countryRadio={countryRadio}
+            apiloaded={apiloaded}
+            setBottomPopUp={setBottomPopUp}
+            />   
+              
+          {
+            apiloaded &&
+          <MenuRadio
+            trigger={bottomPopUp}
+            setBottomPopUp={setBottomPopUp}
+            getRadio={getRadio}
+            countryRadio={countryRadio} />
+          } 
+             
+      </div> 
         
       </Route>
       </Switch> 

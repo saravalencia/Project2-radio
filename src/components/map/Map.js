@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
-import MenuRadio from '../menuRadio/MenuRadio'
+import './map.css'
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 
-import './map.css';
+
 
 /*[ISO2 country code] to find countrys by code*/
 

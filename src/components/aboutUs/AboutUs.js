@@ -1,9 +1,8 @@
 import React from 'react';
 import './AboutUs.css';
-import Cards from './Cards'
 import ContactList from './ContactList';
 
-function AboutUs(props){
+function AboutUs(){
 
     return(
 
