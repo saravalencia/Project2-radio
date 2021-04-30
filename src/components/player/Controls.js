@@ -41,10 +41,10 @@ function Controls(props) {
           </div>         
                  
           <div className="musicControls">
-                <span  className="prev" onClick={props.playPreviousRadio}><i class="fas fa-step-backward"></i></span>
+                <span  className={props.randomRadio ? "prev-hidden" : "prev"} onClick={props.playPreviousRadio}><i class="fas fa-step-backward"></i></span>
                 <span className="play" onClick={accion}><i class={props.isPlaying ? "fas fa-pause" : "fas fa-play"}></i></span>
-                <span  className="next" onClick= {props.playNextRadio}><i class="fas fa-step-forward"></i></span>
-                <span className="random" onClick={props.getNewRandomRadio}><i class="fas fa-random"></i> </span>                    
+                <span  className={props.randomRadio ? "next-hidden" : "next"} onClick= {props.playNextRadio}><i class="fas fa-step-forward"></i></span>
+                <span className="random" onClick={props.getNewRandomRadio}>Random Radio:<i class="fas fa-random"></i> </span>                    
           </div>
         <div className='name-country-radio'>
             
@@ -52,7 +52,7 @@ function Controls(props) {
         <h3 className='radio-name'>{props.randomRadio.name} </h3>
         
         <h3 className='country-name'>{props.randomRadio.country}</h3> 
-        <img className="image-player" src={props.randomRadio.favicon}  onError={setDefaultSrc}/>
+        {/* <img className="image-player" src={props.randomRadio.favicon}  onError={setDefaultSrc}/> */}
       
       
         </div>

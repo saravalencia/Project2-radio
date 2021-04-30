@@ -14,7 +14,7 @@ function App() {
   let [valueRadio, setValueRadio] = useState("");
   let [apiloaded, setApiloaded] = useState("")
   let [stations, setStations] = useState(false);
-  let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
+  let [randomRadio, setRandomRadio] = useState("")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
  
   
@@ -39,7 +39,7 @@ function App() {
     setValueRadio(selectedRadio)
     console.log(index)
     setCurrentCountryRadioIndex(index)
-    
+    setRandomRadio(false)
   }
  
   
@@ -57,11 +57,14 @@ function App() {
 
   const playNextRadio = () => {
     
+    // if(typeof(valueRadio) === "string" )  {
+    //   getNewRandomRadio()
+    // }
    
-   if (currentCountryRadioIndex === 9 ) {
+     if (currentCountryRadioIndex === 9  ) {
      setCurrentCountryRadioIndex(0);
      setValueRadio(countryRadio[0].url)
-   } else {
+   } else  {
     setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
     setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
    }
@@ -69,13 +72,16 @@ function App() {
   }
 
   const playPreviousRadio = () => {
+
+    // if(typeof(valueRadio) === "string" )  {
+    //   getNewRandomRadio()
+    // }
     
    
-    if (currentCountryRadioIndex === 9 ) {
+   if (currentCountryRadioIndex === 9 ) {
       setCurrentCountryRadioIndex(0);
       setValueRadio(countryRadio[0].url)
     } else {
-      console.log(countryRadio[currentCountryRadioIndex - 1].url)
      
      setValueRadio(countryRadio[currentCountryRadioIndex - 1].url);
      setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
@@ -99,6 +105,7 @@ const getDataRandom = () => {
         
       }, []);
   
+      console.log(valueRadio)
 
   return (
     
