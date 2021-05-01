@@ -1,4 +1,5 @@
 import { arcToPoint } from '@amcharts/amcharts4/.internal/core/rendering/Path'
+import { add } from '@amcharts/amcharts4/.internal/core/utils/Array'
 import React from 'react'
 import './player.css'
 
@@ -50,7 +51,7 @@ function Controls(props) {
                 <span className="play" onClick={accion}><i class={props.isPlaying ? "fas fa-pause" : "fas fa-play"}></i></span>
                 <span  className="next" onClick=''><i class="fas fa-step-forward"></i></span>
                 <span className="random" onClick=''><i class="fas fa-random"></i> </span>      
-               {/* <span  className="fav" onClick=''><i class="far fa-heart"></i></span> */}          
+                <span  className="fav" onClick={add}><i class={props.isAdding ? "fas fa-heart" : "far fa-heart"}></i></span> 
           </div>
 
           {/* <div className="progressb">

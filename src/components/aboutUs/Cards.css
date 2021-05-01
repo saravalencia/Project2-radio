@@ -31,4 +31,14 @@
     margin-bottom: 0.5rem;
 }
 
+.linkedin, .github{
+    color: rgb(73, 70, 70);
+    padding: 2px;
+    font-size: 1.3rem;
+}
+
+.links{
+    margin-top: 10px;
+}
+
 

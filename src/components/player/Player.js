@@ -8,6 +8,7 @@ function Player(props) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isCurrentRadio, setIsCurrentRadio] = useState(isPlaying);
+  const [isAdding, setIsAdding] = useState(false);
 
 
  
@@ -25,6 +26,8 @@ function Player(props) {
           setIsCurrentRadio={setIsCurrentRadio}
           //getbackwars={props.getbackwars}
           nextRadioIndex={props.nextRadioIndex}
+          isAdding={isAdding}
+          setIsAdding={setIsAdding}
           
           />
           
