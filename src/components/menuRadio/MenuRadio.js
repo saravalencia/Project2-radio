@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import defaultImage from './defaultImage.jpg'
 import './menuRadio.css'
+import Favorites from './Radios'
 
 function MenuRadio(props){
-
+  //const [isFavorite, setIsFavorite] = useState(false)
   const setDefaultSrc = (event) => {
     event.target.src = defaultImage;
 }
@@ -23,10 +24,17 @@ function MenuRadio(props){
           props.countryRadio.map((countrys, index)=> 
 
           <div key={index} className="modal-body"> 
-          {<a onClick={() => props.getRadio(countrys.url_resolved)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
-          <p className='a-radio' onClick={() => props.getRadio(countrys.url_resolved, index)}>
+          {<a onClick={() => props.getRadio(countrys)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
+          <p className='a-radio' onClick={() => props.getRadio(countrys, index)}>
           {countrys.name}  
-          </p>                
+          </p>    
+          <Favorites
+          handleFavorites={props.handleFavorites}
+          info={countrys}
+          // name={countrys.name}
+          // favicon={countrys.favicon} 
+          // url_resolved={countrys.url_resolved}
+          />            
           </div>
           
          

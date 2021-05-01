@@ -12,7 +12,7 @@ function Player(props) {
  
   return (
       <div className="c-player">
-          <audio src={props.valueRadio} autoPlay  muted={isMuted} ref={audioEl}></audio>
+          <audio src={props.valueRadio.url_resolved} autoPlay  muted={isMuted} ref={audioEl}></audio>
           <Controls
           playPreviousRadio={props.playPreviousRadio}
           playNextRadio={props.playNextRadio}
@@ -26,6 +26,8 @@ function Player(props) {
           setIsCurrentRadio={setIsCurrentRadio}
           country={props.country}
           randomRadio={props.randomRadio}
+          valueRadio={props.valueRadio}
+          showInfo={props.showInfo}
           />
           
       </div>

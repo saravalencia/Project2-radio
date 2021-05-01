@@ -17,8 +17,9 @@ function App() {
   let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
   let [bottomPopUp,setBottomPopUp] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(true);
-
+  let [isPlaying, setIsPlaying] = useState(true);
+  let [favorites, setFavorites] = useState([]);
+  let [showInfo, setShowInfo] = useState(false)
   
 
 
@@ -41,22 +42,30 @@ function App() {
     setValueRadio(selectedRadio)
     console.log(index)
     setCurrentCountryRadioIndex(index)
-    
+    setShowInfo(true)    
   }
  
+  const getRadioFavorite = (favoriteRadio) => {
+    setValueRadio(favoriteRadio)
+    console.log(favoriteRadio)
+    setIsPlaying(true)
+    
+  }
   
 
   const getNewRandomRadio = () => {
   
     
-    setValueRadio(randomRadio.url === undefined
+    setValueRadio(randomRadio === undefined
       ? "http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3"
-      : randomRadio.url);
+      : randomRadio);
     setRandomRadio(stations[Math.floor(Math.random() * stations.length)]);
     setIsPlaying(true)
+    setShowInfo(false)
     
   }
 
+ 
 
   const playNextRadio = () => {
     
@@ -104,7 +113,9 @@ const getDataRandom = () => {
         
       }, []);
   
- 
+const handleFavorites = (radiosFavoritesInfo) => {
+ setFavorites([...favorites, radiosFavoritesInfo]);
+};
   
   return (
     
@@ -122,7 +133,8 @@ const getDataRandom = () => {
       <Route exact path="/favorites">
     
           <Favorites
-            valueRadio={valueRadio} />          
+            favoritesList={favorites}
+            getRadioFavorite={getRadioFavorite} />          
                       
       </Route>
       <Route exact path="/">        
@@ -142,9 +154,10 @@ const getDataRandom = () => {
             trigger={bottomPopUp}
             setBottomPopUp={setBottomPopUp}
             getRadio={getRadio}
-            countryRadio={countryRadio} />
+            countryRadio={countryRadio} 
+            handleFavorites={handleFavorites}/>
           } 
-             
+           
       </div> 
         
       </Route>
@@ -158,6 +171,8 @@ const getDataRandom = () => {
           playNextRadio={playNextRadio}
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}
+          getRadioFavorite={getRadioFavorite}
+          showInfo={showInfo}
       />     
       </BrowserRouter>
     
