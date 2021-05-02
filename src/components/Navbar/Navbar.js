@@ -1,11 +1,13 @@
 import {MenuItems} from './MenuItems';
 import './Navbar.css';
 import {useState} from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 function Navbar() {
-
+    const user = useSelector(state => state.authentication.user);
     const [click, clicked] = useState(false)
 
     const handleClick = () => {
@@ -31,6 +33,7 @@ function Navbar() {
                })}  
         </ul>   </ul>
         <h1 className='radio-logo'>Radio<i className="fas fa-compact-disc"></i></h1>
+        <h4 className='user'><a href="/login"><i class="fas fa-user"></i></a> {user?"Hi " + user.firstName + "!":""}</h4>
       </nav>
     );
   }

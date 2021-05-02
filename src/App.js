@@ -6,8 +6,16 @@ import Map from './components/map/Map';
 import Player from './components/player/Player'
 import AboutUs from './components/aboutUs/AboutUs'
 import Favorites from './components/favorites/Favorites'
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import {useLocalStorage} from './components/favorites/useLocalStorage'
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {useLocalStorage} from './components/favorites/useLocalStorage';
+
+import { history } from './_helpers';
+import { alertActions } from './_actions';
+import { PrivateRoute } from './_components';
+import { LoginPage } from './LoginPage';
+import { RegisterPage } from './RegisterPage';
+
 
 
 function App() {
@@ -20,6 +28,16 @@ function App() {
   //let favorites = valueRadio
   //let [favorites, setFavorites] = 
   //let [currentRadioIndex, setcurrentRadioIndex] = useState('')
+
+  const alert = useSelector(state => state.alert);
+  const dispatch = useDispatch();
+
+    useEffect(() => {
+        history.listen((location, action) => {
+            // clear alert on location change
+            dispatch(alertActions.clear());
+        });
+    }, []);
 
   
   const getData = (countryCode) => {
@@ -85,10 +103,10 @@ function App() {
 
 
   
-  return (
+  return ( 
     
     <div className="App">
-      <BrowserRouter>
+      <Router history={history}>
       <Navbar/>
       
       <Switch>      
@@ -126,6 +144,15 @@ function App() {
               />
                  
       </Route>
+      
+      <Route exact path="/login">
+        <LoginPage/>
+      </Route>
+
+      <Route exact path="/register">
+        <RegisterPage/>
+      </Route>
+      <Redirect from="*" to="/" />
       </Switch> 
       <Player 
           valueRadio={valueRadio}
@@ -133,7 +160,7 @@ function App() {
           //getbackwars={getbackwars}
          // nextRadioIndex={nextRadioIndex}
       />     
-      </BrowserRouter>
+      </Router>
     
 
       

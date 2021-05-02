@@ -20,6 +20,7 @@
         url:"/favorites",
         cName: 'nav-links',
     },
+    
 
     
 ]
