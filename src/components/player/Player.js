@@ -5,7 +5,7 @@ import './player.css'
 
 function Player(props) {
   const audioEl = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [isCurrentRadio, setIsCurrentRadio] = useState(isPlaying);
 

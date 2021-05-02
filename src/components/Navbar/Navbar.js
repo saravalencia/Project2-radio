@@ -29,6 +29,7 @@ function Navbar() {
                      </li>
                    )
                })}  
+               <li><i class="fas fa-music"></i> Random Radio</li>
         </ul>   </ul>
         <h1 className='radio-logo'>Radio<i className="fas fa-compact-disc"></i></h1>
       </nav>

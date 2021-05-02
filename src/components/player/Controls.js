@@ -7,7 +7,6 @@ import defaultImage from '../menuRadio/defaultImage.jpg'
 
 
 function Controls(props) {
-
     function accion(){
         if (props.isPlaying){
             props.setIsPlaying(false)

@@ -1,42 +1,43 @@
-import  React from 'react'
-import './menuRadio.css'
+import React from 'react'
 import defaultImage from './defaultImage.jpg'
+import './menuRadio.css'
 
 function MenuRadio(props){
 
-
   const setDefaultSrc = (event) => {
-      event.target.src = defaultImage;
-  }
- 
+    event.target.src = defaultImage;
+}
 
     return (props.trigger) ? (
 
-         
-  <div className="container-popUp"> 
-      <div className="container-radios">
-        <div className="btn-cl-pop">
-            <button  onClick={()=> props.setBottomPopUp(false)}>X</button>
-        </div>
-           
-      
+   <div className="container-popUp">
+
+<div className="modal-wrapper">       
+      <div className="modal-header">
+            <h1>TOP 10 RADIOS LIST</h1>
+            <spam  className="close-modal-btn" onClick={()=> props.setBottomPopUp(false)}>X</spam>
+      </div>
+      <div className="modal-content">
       {
           
-         props.countryRadio.map((countrys, index)=> 
-         
-           <div className="container-all-radios mov-radios"> 
-          {<img className="img" src={countrys.favicon} onError={setDefaultSrc}/> }
-          <a  className='a-radio' onClick={() => props.getRadio(countrys.url_resolved, index)}>
-          {countrys.name}
-          </a>
-          <button className="button-favorites">+</button>          
+          props.countryRadio.map((countrys, index)=> 
+
+          <div key={index} className="modal-body"> 
+          {<a onClick={() => props.getRadio(countrys.url_resolved)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
+          <p className='a-radio' onClick={() => props.getRadio(countrys.url_resolved, index)}>
+          {countrys.name}  
+          </p>                
           </div>
           
          
-          )}
-    
+          )}  
+      </div>       
+        
     </div>
-  </div> 
+
+
+   </div>      
+   
  
  
     ) : "";
@@ -46,3 +47,7 @@ function MenuRadio(props){
 }
 
 export default MenuRadio;
+
+
+
+

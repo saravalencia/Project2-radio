@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from './components/Navbar/Navbar'
-import './App.css';
 import Map from './components/map/Map'; 
-//import MenuRadio from './components/menuRadio/MenuRadio'
 import Player from './components/player/Player'
 import AboutUs from './components/aboutUs/AboutUs'
+import Favorites from './components/favorites/Favorites'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import './App.css';
+import MenuRadio from './components/menuRadio/MenuRadio'
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
   let [stations, setStations] = useState(false);
   let [randomRadio, setRandomRadio] = useState("")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
- 
+  let [bottomPopUp,setBottomPopUp] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true);
   
   console.log(randomRadio)
 
@@ -104,50 +106,67 @@ const getDataRandom = () => {
         getDataRandom()
         
       }, []);
+
+     
   
       console.log(valueRadio)
 
   return (
     
-    <div className="App">
-      <BrowserRouter>
-      <Navbar/>
+    
+    
+      <div className="App">
+        <BrowserRouter>
+        <Navbar/>
+        
+        <Switch>
+        <Route exact path="/aboutUs">
       
-      <Switch>      
-      <Route exact path="/" exact>        
-            
+            <AboutUs  />           
+                        
+        </Route>
+  
+        <Route exact path="/favorites">
+      
+            <Favorites
+              valueRadio={valueRadio} />          
+                        
+        </Route>
+        <Route exact path="/">        
+                   
+        <div className="container-menu-map">
             <Map 
-
               getCountryCode={getCountryCode}
               getRadio={getRadio}
               countryRadio={countryRadio}
               apiloaded={apiloaded}
-              />            
-                 
-      </Route>
-
-      <Route exact path="/aboutUs">
-    
-            <AboutUs  />           
-                      
-      </Route>
-
-      <Route exact path="/favorites">
-    
-            <h1>FAVORITES</h1>          
-                      
-      </Route>
-     
-      </Switch> 
-      <Player 
-          playPreviousRadio={playPreviousRadio}
-          playNextRadio={playNextRadio}
-          getNewRandomRadio={getNewRandomRadio}
-          valueRadio={valueRadio}
-          countryRadio={countryRadio}
-          randomRadio={randomRadio}
-      />     
-      </BrowserRouter>
+              setBottomPopUp={setBottomPopUp}
+              />   
+                
+            {
+              apiloaded &&
+            <MenuRadio
+              trigger={bottomPopUp}
+              setBottomPopUp={setBottomPopUp}
+              getRadio={getRadio}
+              countryRadio={countryRadio} />
+            } 
+               
+        </div> 
+          
+        </Route>
+        </Switch> 
+        <Player 
+            countryRadio={countryRadio}
+            valueRadio={valueRadio}
+            getNewRandomRadio={getNewRandomRadio}
+            randomRadio={randomRadio}
+            playPreviousRadio={playPreviousRadio}
+            playNextRadio={playNextRadio}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+        />     
+        </BrowserRouter>
     
 
       
