@@ -46,22 +46,28 @@ function Controls(props) {
                 <span  className={context.randomRadio ? "prev-hidden" : "prev"} onClick={context.playPreviousRadio}><i class="fas fa-step-backward"></i></span>
                 <span className="play" onClick={accion}><i class={props.isPlaying ? "fas fa-pause" : "fas fa-play"}></i></span>
                 <span  className={context.randomRadio ? "next-hidden" : "next"} onClick= {context.playNextRadio}><i class="fas fa-step-forward"></i></span>
-                <span className="random" onClick={context.getNewRandomRadio}>Random Radio:<i class="fas fa-random"></i> </span>                    
+                <span className="random" onClick={context.getNewRandomRadio}><i class="fas fa-random"></i> </span>                    
           </div>
-        <div className='name-country-radio'>
-            
-         
-        <h3 className='radio-name'>{context.randomRadio.name} </h3>
         
-        <h3 className='country-name'>{context.randomRadio.country}</h3> 
-        {/* <img className="image-player" src={props.randomRadio.favicon}  onError={setDefaultSrc}/> */}
-      
-      
-        </div>
+          {
+              context.showInfo ?
+           <div className="name-country-radio">
+                <h3 className='radio-name'>{context.valueRadio.name} </h3>
+                <h3 className='country-name'>{context.valueRadio.country}</h3> 
+                <img className="image-player" src={context.valueRadio.favicon}  onError={setDefaultSrc}/>
+          </div> 
+          :
+          <div className="name-country-radio">
+                <h3 className='radio-name'>{context.randomRadio.name} </h3>
+                <h3 className='country-name'>{context.randomRadio.country}</h3> 
+                <img className="image-player" src={context.randomRadio.favicon}  onError={setDefaultSrc}/>
+            </div>
+          }
          
         </div>
     )
 }
+
 
 
 export default Controls

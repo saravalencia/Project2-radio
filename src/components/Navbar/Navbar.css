@@ -36,9 +36,12 @@ margin-left: 1rem;
 .nav-links {
     color: black;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0rem 1rem;
 }
 
+.nav-random{
+    cursor: pointer;
+}
 .nav-links:hover {
     background-color: #6d76f7;
     border-radius: 10px;

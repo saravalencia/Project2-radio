@@ -15,6 +15,7 @@ const MyProvider = props => {
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
   const [isPlaying, setIsPlaying] = useState(true);
   let [bottomPopUp,setBottomPopUp] = useState(false)
+  let [showInfo, setShowInfo] = useState(false)
 
 
   const getData = (countryCode) => {
@@ -37,7 +38,8 @@ const MyProvider = props => {
     setValueRadio(selectedRadio)
     console.log(index)
     setCurrentCountryRadioIndex(index)
-    setRandomRadio(false)
+    // setRandomRadio(false)
+    setShowInfo(true)   
   }
  
   
@@ -48,7 +50,8 @@ const MyProvider = props => {
       ? "http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3"
       : randomRadio.url);
     setRandomRadio(stations[Math.floor(Math.random() * stations.length)]);
-    
+    setIsPlaying(true)
+    setShowInfo(false)   
   }
 
 
@@ -106,8 +109,9 @@ const getDataRandom = () => {
             randomRadio: randomRadio,
             currentCountryRadioIndex: currentCountryRadioIndex,
             isPlaying: isPlaying,
-            setBottomPopUp: setBottomPopUp,
             bottomPopUp: bottomPopUp,
+            showInfo: showInfo,
+            setBottomPopUp: setBottomPopUp,
             getData: getData,
             getCountryCode: getCountryCode,
             getRadio: getRadio,
