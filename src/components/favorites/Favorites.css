@@ -1,3 +1,15 @@
+.favorites-radios{
+    width: 80%;
+    height: 621px;
+    margin: auto;
+}
+
+.title-favorites{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 .radios-container{
     display: flex;
     align-items: center;
