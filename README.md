@@ -1,6 +1,8 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Project II RADIOO APP :musical_note:
+
+Web app created by students of the Wild Code School 
 
 ## Available Scripts
 
