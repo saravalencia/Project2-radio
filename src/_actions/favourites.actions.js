@@ -1,4 +1,4 @@
-import { userConstants } from '../_constants';
+import { favouritesConstants } from '../_constants';
 import { favouriteService } from '../_services';
 import { alertActions } from '.';
 import { history } from '../_helpers';
@@ -30,7 +30,21 @@ function getById(id) {
 }
 
 function getByUsername(username) {
-    return favouriteService.getByUsername(username);
+
+      return dispatch => {
+        dispatch(request());
+
+        favouriteService.getByUsername(username)
+            .then(
+                favs => dispatch(success(favs)),
+                error => dispatch(failure(error.toString()))
+            );
+    };
+
+    function request() { return { type: favouritesConstants.GETBYUSERNAME_REQUEST } }
+    function success(favs) { return { type: favouritesConstants.GETBYUSERNAME_SUCCESS, favs } }
+    function failure(error) { return { type: favouritesConstants.GETBYUSERNAME_FAILURE, error } }
+    
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -45,7 +59,7 @@ function _delete(id) {
             );
     };
 
-    function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
-    function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
-    function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
+    function request(id) { return { type: favouritesConstants.DELETE_REQUEST, id } }
+    function success(id) { return { type: favouritesConstants.DELETE_SUCCESS, id } }
+    function failure(id, error) { return { type: favouritesConstants.DELETE_FAILURE, id, error } }
 }
