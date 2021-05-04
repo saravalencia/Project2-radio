@@ -69,11 +69,11 @@ const MyProvider = props => {
    
    if (currentCountryRadioIndex === 9 ) {
      setCurrentCountryRadioIndex(0);
-     setValueRadio(countryRadio[0])
+     setValueRadio(countryRadio[0].url)
    } else {
-     console.log(countryRadio[currentCountryRadioIndex + 1])
+     console.log(countryRadio[currentCountryRadioIndex + 1].url)
     
-    setValueRadio(countryRadio[currentCountryRadioIndex + 1]);
+    setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
     setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
    }
     
@@ -84,11 +84,11 @@ const MyProvider = props => {
    
     if (currentCountryRadioIndex === 9 ) {
       setCurrentCountryRadioIndex(0);
-      setValueRadio(countryRadio[0])
+      setValueRadio(countryRadio[0].url)
     } else {
-      console.log(countryRadio[currentCountryRadioIndex - 1])
+      console.log(countryRadio[currentCountryRadioIndex - 1].url)
      
-     setValueRadio(countryRadio[currentCountryRadioIndex - 1]);
+     setValueRadio(countryRadio[currentCountryRadioIndex - 1].url);
      setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
     }
      
