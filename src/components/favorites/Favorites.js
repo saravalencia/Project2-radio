@@ -12,8 +12,10 @@ function Favorites({ getRadioFavorite}){
              <h1>Favorite List</h1>   
             </div>
             <div className="radios-container">
-              {context.favoritesList.map((info) => (
-                <ListFavorites  {...info}
+              {context.favoritesList.map((info, index) => (
+                <ListFavorites
+                key={index} 
+                {...info}
                 getRadioFavorite={getRadioFavorite}
             />
             ))}  

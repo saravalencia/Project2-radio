@@ -69,11 +69,11 @@ const MyProvider = props => {
    
    if (currentCountryRadioIndex === 9 ) {
      setCurrentCountryRadioIndex(0);
-     setValueRadio(countryRadio[0].url)
+     setValueRadio(countryRadio[0])
    } else {
-     console.log(countryRadio[currentCountryRadioIndex + 1].url)
+     console.log(countryRadio[currentCountryRadioIndex + 1])
     
-    setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
+    setValueRadio(countryRadio[currentCountryRadioIndex + 1]);
     setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
    }
     
@@ -84,11 +84,11 @@ const MyProvider = props => {
    
     if (currentCountryRadioIndex === 9 ) {
       setCurrentCountryRadioIndex(0);
-      setValueRadio(countryRadio[0].url)
+      setValueRadio(countryRadio[0])
     } else {
-      console.log(countryRadio[currentCountryRadioIndex - 1].url)
+      console.log(countryRadio[currentCountryRadioIndex - 1])
      
-     setValueRadio(countryRadio[currentCountryRadioIndex - 1].url);
+     setValueRadio(countryRadio[currentCountryRadioIndex - 1]);
      setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
     }
      
@@ -111,7 +111,10 @@ const getDataRandom = () => {
       }, []);
   
 const handleFavorites = (radiosFavoritesInfo) => {
- setFavorites([...favorites, radiosFavoritesInfo]);
+
+   setFavorites([...favorites, radiosFavoritesInfo]);
+ 
+
 };
 
     return (
