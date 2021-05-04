@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import defaultImage from './defaultImage.jpg'
 import './menuRadio.css'
 import {MyContext} from '../../context/MyProvider'
+import Favorites from './Radios'
 
 
 
@@ -32,7 +33,14 @@ function MenuRadio(){
           {<a onClick={() => context.getRadio(countrys.url_resolved)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
           <p className='a-radio' onClick={() => context.getRadio(countrys.url_resolved, index)}>
           {countrys.name}  
-          </p>                
+          </p>
+          <Favorites
+          handleFavorites={context.handleFavorites}
+          info={countrys}
+          // name={countrys.name}
+          // favicon={countrys.favicon} 
+          // url_resolved={countrys.url_resolved}
+          />                
           </div>
           
          

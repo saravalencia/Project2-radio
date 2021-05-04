@@ -1,28 +1,17 @@
-import React from 'react'
-import Favorites from './Favorites'
+import {MyContext} from '../../context/MyProvider'
+import React, {useContext} from 'react';
 
-const favoritesRadios = [
-    {
-      name: "",
-      icon: "",
-      url: "",
-    },
-    
-  ];
-  
-  const ListFavorites = () => {
-    return (
-      <div  className="favorites-radios" >
-        {favoritesRadios.map((radios, index) => (
-          <Favorites
-            key={index}
-            img={radios.icon}
-            name={radios.name}          
-            url={radios.url}
-          />
-        ))}
-      </div>
-    );
-  };
-  
-  export default ListFavorites;
+function Cards({info, getRadioFavorite}) {
+  const context = useContext(MyContext)
+  return (
+    <div className="cards-radios">
+        {<a key={info.name} onClick={() => context.getRadioFavorite(info.url_resolved)}><img className="img" alt="Radio-Icon" src={info.favicon} /></a> }
+          <p className='a-radio' onClick={() => context.getRadioFavorite(info.url_resolved)}>
+          {info.name}  
+          </p> 
+    </div>
+   
+  );
+}
+
+export default Cards;

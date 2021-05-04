@@ -12,6 +12,7 @@ const MyProvider = props => {
   let [apiloaded, setApiloaded] = useState("")
   let [stations, setStations] = useState(false);
   let [randomRadio, setRandomRadio] = useState("")
+  let [favorites, setFavorites] = useState([]);
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
   const [isPlaying, setIsPlaying] = useState(true);
   let [bottomPopUp,setBottomPopUp] = useState(false)
@@ -42,7 +43,16 @@ const MyProvider = props => {
     setShowInfo(true)   
   }
  
+  const getRadioFavorite = (favoriteRadio) => {
+    setValueRadio(favoriteRadio)
+    console.log(favoriteRadio)
+    setIsPlaying(true)
+    
+  }
   
+  const handleFavorites = (radiosFavoritesInfo) => {
+    setFavorites([...favorites, radiosFavoritesInfo]);
+   };
 
   const getNewRandomRadio = () => {
   
@@ -110,7 +120,9 @@ const getDataRandom = () => {
             currentCountryRadioIndex: currentCountryRadioIndex,
             isPlaying: isPlaying,
             bottomPopUp: bottomPopUp,
-            showInfo: showInfo,
+            favoritesList: favorites,
+            handleFavorites: handleFavorites,
+            getRadioFavorite: getRadioFavorite,            
             setBottomPopUp: setBottomPopUp,
             getData: getData,
             getCountryCode: getCountryCode,

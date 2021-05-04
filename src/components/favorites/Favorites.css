@@ -1,24 +1,35 @@
-.containerPopUp-radios{
-    display: flex;  
-    justify-content: center;
-    height: 621px;
+.radios-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.container-fav-radios{
- width: 200px;
- display: flex;
+.cards-radios{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px;
 }
 
-.container-fav-radios img{
-    width: 50px;
-    height: 50px;
+.cards-radios img{
+    width: 70px;
+    height: 70px;
+    border-radius: 26px;
+    border: 2px solid black;
+    box-shadow: 1px 2px 5px rgb(0 0 0);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
 }
 
-.container-fav-radios h1{
-    font-size: 20px;
-}
-
-.btn-delete{
-    background: cornflowerblue;
-    height: 20px;
+.cards-radios p{
+    font-size: 1rem;
+    color: black;
+    width: 97px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
 }
