@@ -11,20 +11,20 @@ const MyProvider = props => {
   let [valueRadio, setValueRadio] = useState("");
   let [apiloaded, setApiloaded] = useState("")
   let [stations, setStations] = useState(false);
-  let [randomRadio, setRandomRadio] = useState("")
-  let [favorites, setFavorites] = useState([]);
+  let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
-  const [isPlaying, setIsPlaying] = useState(true);
   let [bottomPopUp,setBottomPopUp] = useState(false)
+  let [isPlaying, setIsPlaying] = useState(true);
+  let [favorites, setFavorites] = useState([]);
   let [showInfo, setShowInfo] = useState(false)
+  console.log(valueRadio)
 
 
   const getData = (countryCode) => {
-
     fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
     .then(response => response.json())
     .then(data => {
-      setCountryRadio(data.filter((country) => country.codec === "MP3" || country.codec === "OGG").sort
+      setCountryRadio(data.filter((country) => country.codec === "MP3").sort
     ((a,b) => b.votes - a.votes ).slice(0,10))
       setApiloaded(true)     
     }) 
@@ -39,8 +39,7 @@ const MyProvider = props => {
     setValueRadio(selectedRadio)
     console.log(index)
     setCurrentCountryRadioIndex(index)
-    // setRandomRadio(false)
-    setShowInfo(true)   
+    setShowInfo(true)    
   }
  
   const getRadioFavorite = (favoriteRadio) => {
@@ -50,27 +49,30 @@ const MyProvider = props => {
     
   }
   
-  const handleFavorites = (radiosFavoritesInfo) => {
-    setFavorites([...favorites, radiosFavoritesInfo]);
-   };
 
   const getNewRandomRadio = () => {
   
-    setValueRadio(randomRadio.url === undefined
+    
+    setValueRadio(randomRadio === undefined
       ? "http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3"
-      : randomRadio.url);
+      : randomRadio);
     setRandomRadio(stations[Math.floor(Math.random() * stations.length)]);
     setIsPlaying(true)
-    setShowInfo(false)   
+    setShowInfo(false)
+    
   }
 
+ 
 
   const playNextRadio = () => {
- 
-     if (currentCountryRadioIndex === 9  ) {
+    
+   
+   if (currentCountryRadioIndex === 9 ) {
      setCurrentCountryRadioIndex(0);
      setValueRadio(countryRadio[0].url)
-   } else  {
+   } else {
+     console.log(countryRadio[currentCountryRadioIndex + 1].url)
+    
     setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
     setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
    }
@@ -78,12 +80,13 @@ const MyProvider = props => {
   }
 
   const playPreviousRadio = () => {
-
+    
    
-   if (currentCountryRadioIndex === 9 ) {
+    if (currentCountryRadioIndex === 9 ) {
       setCurrentCountryRadioIndex(0);
       setValueRadio(countryRadio[0].url)
     } else {
+      console.log(countryRadio[currentCountryRadioIndex - 1].url)
      
      setValueRadio(countryRadio[currentCountryRadioIndex - 1].url);
      setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
@@ -106,8 +109,10 @@ const getDataRandom = () => {
         getDataRandom()
         
       }, []);
-
-
+  
+const handleFavorites = (radiosFavoritesInfo) => {
+ setFavorites([...favorites, radiosFavoritesInfo]);
+};
 
     return (
         <MyContext.Provider value={{
@@ -119,9 +124,11 @@ const getDataRandom = () => {
             randomRadio: randomRadio,
             currentCountryRadioIndex: currentCountryRadioIndex,
             isPlaying: isPlaying,
+            showInfo: showInfo,
             bottomPopUp: bottomPopUp,
             favoritesList: favorites,
             handleFavorites: handleFavorites,
+            setIsPlaying: setIsPlaying,
             getRadioFavorite: getRadioFavorite,            
             setBottomPopUp: setBottomPopUp,
             getData: getData,
@@ -131,6 +138,7 @@ const getDataRandom = () => {
             playNextRadio: playNextRadio,
             playPreviousRadio: playPreviousRadio,
             getDataRandom: getDataRandom,
+            
             
         }}>
             {props.children}

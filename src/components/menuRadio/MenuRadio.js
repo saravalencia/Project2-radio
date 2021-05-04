@@ -30,10 +30,10 @@ function MenuRadio(){
           context.countryRadio.map((countrys, index)=> 
 
           <div key={index} className="modal-body"> 
-          {<a onClick={() => context.getRadio(countrys.url_resolved)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
-          <p className='a-radio' onClick={() => context.getRadio(countrys.url_resolved, index)}>
+          {<a onClick={() => context.getRadio(countrys)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
+          <p className='a-radio' onClick={() => context.getRadio(countrys, index)}>
           {countrys.name}  
-          </p>
+          </p> 
           <Favorites
           handleFavorites={context.handleFavorites}
           info={countrys}

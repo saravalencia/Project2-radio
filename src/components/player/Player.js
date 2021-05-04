@@ -17,7 +17,7 @@ function Player(props) {
   return (
       <div className="c-player">
 
-          <audio src={context.valueRadio} autoPlay  muted={isMuted} ref={audioEl}></audio>
+          <audio src={context.valueRadio.url_resolved} autoPlay  muted={isMuted} ref={audioEl}></audio>
           <Controls 
           
           setIsMuted={setIsMuted} 
