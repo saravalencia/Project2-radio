@@ -1,28 +1,17 @@
-import React from 'react'
-import Favorites from './Favorites'
+// import React from 'react'
+// //import MenuRadio from '../menuRadio/MenuRadio';
+// import Favorites from './Favorites'
 
-const favoritesRadios = [
-    {
-      name: "",
-      icon: "",
-      url: "",
-    },
-    
-  ];
-  
-  const ListFavorites = () => {
-    return (
-      <div  className="favorites-radios" >
-        {favoritesRadios.map((radios, index) => (
-          <Favorites
-            key={index}
-            img={radios.icon}
-            name={radios.name}          
-            url={radios.url}
-          />
-        ))}
-      </div>
-    );
-  };
-  
-  export default ListFavorites;
+function Cards({info, getRadioFavorite}) {
+  return (
+    <div className="cards-radios">
+        {<a onClick={() => getRadioFavorite(info)}><img className="img" alt="Radio-Icon" src={info.favicon} /></a> }
+          <p className='a-radio' onClick={() => getRadioFavorite(info)}>
+          {info.name}  
+          </p> 
+    </div>
+   
+  );
+}
+
+export default Cards;

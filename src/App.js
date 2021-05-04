@@ -9,7 +9,7 @@ import Favorites from './components/favorites/Favorites'
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {useLocalStorage} from './components/favorites/useLocalStorage';
-
+import MenuRadio from './components/menuRadio/MenuRadio'
 import { history } from './_helpers';
 import { alertActions } from './_actions';
 import { PrivateRoute } from './_components';
@@ -19,15 +19,19 @@ import { RegisterPage } from './RegisterPage';
 
 
 function App() {
+  
   let [countryRadio, setCountryRadio] = useState('')
   let [country, setCountry] = useState('')
   let [valueRadio, setValueRadio] = useState("");
   let [apiloaded, setApiloaded] = useState("")
-  //let [bottomPopUp,setBottomPopUp] = useState(false)
-  let [addFavorites, setAddFavorites] = useState([]);   //este de acá
-  //let favorites = valueRadio
-  //let [favorites, setFavorites] = 
-  //let [currentRadioIndex, setcurrentRadioIndex] = useState('')
+  let [stations, setStations] = useState(false);
+  let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
+  let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
+  let [bottomPopUp,setBottomPopUp] = useState(false)
+  let [isPlaying, setIsPlaying] = useState(true);
+  let [favorites, setFavorites] = useState([]);
+  let [showInfo, setShowInfo] = useState(false)
+
 
   const alert = useSelector(state => state.alert);
   const dispatch = useDispatch();
@@ -40,68 +44,96 @@ function App() {
     }, []);
 
   
-  const getData = (countryCode) => {
-    fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
-    .then(response => response.json())
-    .then(data => {
-      setCountryRadio(data)
-      setApiloaded(true)     
-    }) 
-  }
+    const getData = (countryCode) => {
+      fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
+      .then(response => response.json())
+      .then(data => {
+        setCountryRadio(data.filter((country) => country.codec === "MP3").sort
+      ((a,b) => b.votes - a.votes ).slice(0,10))
+        setApiloaded(true)     
+      }) 
+    }
 
   const getCountryCode = (selectedCountry) => {
     setCountry(selectedCountry)
     getData(selectedCountry)
   }
 
-  const getRadio = (selectedRadio) => {
+  const getRadio = (selectedRadio, index) => {
     setValueRadio(selectedRadio)
-    setAddFavorites(selectedRadio)
+    console.log(index)
+    setCurrentCountryRadioIndex(index)
+    setShowInfo(true)    
   }
   
-  const handleAddToFavorites = (radio) => {
-    console.log(radio);
-    //meterle a addFavorites "radio" como un nuevo elemento del array
-    //setAddFavorite([...addFavorites, radio])
-
-  }
-
-
-
-  
-  //  function nextRadioIndex(){
-  //     if (currentRadioIndex + 1 > valueRadio.length - 1) {
-  //       return 0;
-  //     } else {
-  //       return currentRadioIndex + 1;
-  //     }
-  //   };
-  
-
-  // function getbackwars(){
-  //       currentSong(valueRadio.legth - 1)
-
-    // setCurrentSong(() => {
-    //   if (currentSong + 1 > valueRadio.length - 1) {
-    //     return 0;
-    //   } else {
-    //     return currentSong + 1;
-    //   }
-    // })
-  // } 
-  //
+  const getRadioFavorite = (favoriteRadio) => {
+    setValueRadio(favoriteRadio)
+    console.log(favoriteRadio)
+    setIsPlaying(true)
     
+  }
   
-  // const setLocalStorage = value => {
-  //   try{
-  //     valueRadio(value)
-  //     window.localStorage.setItem("text", value)
-  //   } catch (error){
-  //     console.log(error)
-  //   }
-  // }
+  const getNewRandomRadio = () => {
+  
+    
+    setValueRadio(randomRadio === undefined
+      ? "http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3"
+      : randomRadio);
+    setRandomRadio(stations[Math.floor(Math.random() * stations.length)]);
+    setIsPlaying(true)
+    setShowInfo(false)
+    
+  }
+
+  const playNextRadio = () => {
+    
+   
+    if (currentCountryRadioIndex === 9 ) {
+      setCurrentCountryRadioIndex(0);
+      setValueRadio(countryRadio[0].url)
+    } else {
+      console.log(countryRadio[currentCountryRadioIndex + 1].url)
+     
+     setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
+     setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
+    }
+     
+   }
+
+   const playPreviousRadio = () => {
+    
+   
+    if (currentCountryRadioIndex === 9 ) {
+      setCurrentCountryRadioIndex(0);
+      setValueRadio(countryRadio[0].url)
+    } else {
+      console.log(countryRadio[currentCountryRadioIndex - 1].url)
+     
+     setValueRadio(countryRadio[currentCountryRadioIndex - 1].url);
+     setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
+    }
+     
+   }
+
+   const getDataRandom = () => {
+     
+    fetch("https://de1.api.radio-browser.info/json/stations")
+      .then((response) => response.json())
+      .then(data => data.filter(radio => (radio.codec === "MP3" || radio.codec === "OGG"))) //aqui el filter
+      .then((data) => {
+        setStations(data)
+      }
+      )};
 
 
+      useEffect (() => {
+        getDataRandom()
+        
+      }, []);
+  
+      const handleFavorites = (radiosFavoritesInfo) => {
+        setFavorites([...favorites, radiosFavoritesInfo]);
+       };
   
   return ( 
     
@@ -110,15 +142,29 @@ function App() {
       <Navbar/>
       
       <Switch>      
-      <Route exact path="/country" exact>        
-            
-            <Map 
-              getCountryCode={getCountryCode}
-              getRadio={getRadio}
-              countryRadio={countryRadio}
-              apiloaded={apiloaded}
-              addFavorites={addFavorites}
-              />            
+      <Route exact path="/">
+
+      <div className="container-menu-map">
+      <Map 
+            getCountryCode={getCountryCode}
+            getRadio={getRadio}
+            countryRadio={countryRadio}
+            apiloaded={apiloaded}
+            setBottomPopUp={setBottomPopUp}
+            />   
+
+                {
+            apiloaded &&
+          <MenuRadio
+            trigger={bottomPopUp}
+            setBottomPopUp={setBottomPopUp}
+            getRadio={getRadio}
+            countryRadio={countryRadio} 
+            handleFavorites={handleFavorites}/>
+          }    
+        
+        
+        </div>         
                  
       </Route>
 
@@ -131,19 +177,11 @@ function App() {
       <Route exact path="/favorites">
     
             <Favorites
-            valueRadio={valueRadio} />          
+             favoritesList={favorites}
+             getRadioFavorite={getRadioFavorite}  />          
                       
       </Route>
-      <Route exact path="/">        
-                    
-              <Map 
-              getCountryCode={getCountryCode}
-              getRadio={getRadio}
-              countryRadio={countryRadio}
-              apiloaded={apiloaded}
-              />
-                 
-      </Route>
+
       
       <Route exact path="/login">
         <LoginPage/>
@@ -155,10 +193,17 @@ function App() {
       <Redirect from="*" to="/" />
       </Switch> 
       <Player 
-          valueRadio={valueRadio}
-          handleAddToFavorites={handleAddToFavorites}
-          //getbackwars={getbackwars}
-         // nextRadioIndex={nextRadioIndex}
+         
+         countryRadio={countryRadio}
+         valueRadio={valueRadio}
+         getNewRandomRadio={getNewRandomRadio}
+         randomRadio={randomRadio}
+         playPreviousRadio={playPreviousRadio}
+         playNextRadio={playNextRadio}
+         isPlaying={isPlaying}
+         setIsPlaying={setIsPlaying}
+         getRadioFavorite={getRadioFavorite}
+         showInfo={showInfo}
       />     
       </Router>
     
