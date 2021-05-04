@@ -39,7 +39,7 @@ const MyProvider = props => {
     setValueRadio(selectedRadio)
     console.log(index)
     setCurrentCountryRadioIndex(index)
-    // setRandomRadio(false)
+    setRandomRadio(false)
     setShowInfo(true)   
   }
  
