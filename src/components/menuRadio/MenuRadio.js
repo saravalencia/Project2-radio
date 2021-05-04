@@ -31,6 +31,7 @@ function MenuRadio(props){
           <Favorites
           handleFavorites={props.handleFavorites}
           info={countrys}
+          radioName={countrys.name}
           // name={countrys.name}
           // favicon={countrys.favicon} 
           // url_resolved={countrys.url_resolved}

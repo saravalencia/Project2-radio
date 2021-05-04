@@ -2,37 +2,42 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import './Favourites.css';
 
+import { favouritesActions } from '../../_actions';
+import { useDispatch, useSelector } from 'react-redux';
+
 function Favourites(props) {
     const [active, setActive] = React.useState(true);
 
- function handleClickCreate(event) {
-     console.log(event.currentTarget.value);
+    const dispatch = useDispatch();
 
-     //aqui metemos localstoragge
-    const rememberMe = "pizza";
-     localStorage.setItem('rememberMe', event.currentTarget.value);
+    function handleClickCreate(event) {
+        console.log(event.currentTarget.value);
 
-     //aqui añadir funciones delete(variable intermediara), show.
-     
- }
+        //aqui metemos localstoragge
+        const rememberMe = "pizza";
+        localStorage.setItem('rememberMe', event.currentTarget.value);
 
- function handleClickDelete (event) {
-     console.log(event.currentTarget.value);
+        dispatch(favouritesActions.addFavourite('hola','radio'));
 
-     const deleteMe = localStorage.removeItem('rememberMe', event.currentTarget.value);
-     console.log(deleteMe);
- }
+    }
 
- function handleClickShow (event) {
-    console.log(event.currentTarget.value);
+    function handleClickDelete (event) {
+        console.log(event.currentTarget.value);
 
-    const showMe = localStorage.getItem('rememberMe', event.currentTarget.value);
-    console.log(showMe);
-}
+        const deleteMe = localStorage.removeItem('rememberMe', event.currentTarget.value);
+        console.log(deleteMe);
+    }
 
-function handleClickKeep (event) {
-    console.log(event.currentTarget.value);
-}
+    function handleClickShow (event) {
+        console.log(event.currentTarget.value);
+
+        const showMe = localStorage.getItem('rememberMe', event.currentTarget.value);
+        console.log(showMe);
+    }
+
+    function handleClickKeep (event) {
+        console.log(event.currentTarget.value);
+    }
 
 
 

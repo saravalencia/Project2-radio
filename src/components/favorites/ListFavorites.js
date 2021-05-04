@@ -5,9 +5,9 @@
 function Cards({info, getRadioFavorite}) {
   return (
     <div className="cards-radios">
-        {<a onClick={() => getRadioFavorite(info)}><img className="img" alt="Radio-Icon" src={info.favicon} /></a> }
+        {<a onClick={() => getRadioFavorite(info.radioname)}><img className="img" alt="Radio-Icon" src={info.favicon} /></a> }
           <p className='a-radio' onClick={() => getRadioFavorite(info)}>
-          {info.name}  
+          {info.radioname}
           </p> 
     </div>
    
