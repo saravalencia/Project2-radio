@@ -11,14 +11,14 @@ const MyProvider = props => {
   let [valueRadio, setValueRadio] = useState("");
   let [apiloaded, setApiloaded] = useState("")
   let [stations, setStations] = useState(false);
-  let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
+  let [randomRadio, setRandomRadio] = useState("")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
   let [currentRandomRadioIndex, setCurrentRandomRadioIndex] = useState('')
   let [bottomPopUp,setBottomPopUp] = useState(false)
   let [isPlaying, setIsPlaying] = useState(true);
   let [favorites, setFavorites] = useState([]);
   let [showInfo, setShowInfo] = useState(false)
-  console.log(valueRadio)
+  
 
 
   const getData = (countryCode) => {
@@ -81,37 +81,23 @@ const MyProvider = props => {
     
   }
 
-  const playNextRadioRandom = () => {
+   
+   const playPreviusRadioRandom = () => {
     
    
-    if (currentRandomRadioIndex === 10 ) {
+    if (currentRandomRadioIndex === 9 ) {
       setCurrentRandomRadioIndex(0);
-      setValueRadio(stations[0])
+      setRandomRadio(stations[0])
     } else {
-      console.log(stations[currentRandomRadioIndex + 1])
+      console.log(stations[currentRandomRadioIndex - 1])
      
-     setValueRadio(stations[currentRandomRadioIndex + 1]);
-     setCurrentRandomRadioIndex(currentRandomRadioIndex + 1)
-     
+     setRandomRadio(stations[currentRandomRadioIndex - 1]);
+     setCurrentRandomRadioIndex(currentRandomRadioIndex - 1)
     }
      
    }
-  
 
-  const playPreviousRadio = () => {
-    
-   
-    if (currentCountryRadioIndex === 9 ) {
-      setCurrentCountryRadioIndex(0);
-      setValueRadio(countryRadio[0])
-    } else {
-      console.log(countryRadio[currentCountryRadioIndex - 1])
-     
-     setValueRadio(countryRadio[currentCountryRadioIndex - 1]);
-     setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
-    }
-     
-   }
+  
 
 const getDataRandom = () => {
      
@@ -159,8 +145,7 @@ const handleFavorites = (radiosFavoritesInfo) => {
             getRadio: getRadio,
             getNewRandomRadio: getNewRandomRadio,
             playNextRadio: playNextRadio,
-            playNextRadioRandom: playNextRadioRandom,
-            playPreviousRadio: playPreviousRadio,
+            playPreviusRadioRandom: playPreviusRadioRandom,
             getDataRandom: getDataRandom,
             
             

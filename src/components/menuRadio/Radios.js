@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import defaultImage from './defaultImage.jpg'
+
 
 
 function Favorites({handleFavorites, info}) {

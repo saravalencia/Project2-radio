@@ -14,9 +14,7 @@ function App() {
 
   const context = useContext(MyContext)
 
-  return (
-    
-    
+  return (    
 
 <div className="App">
         <BrowserRouter>
