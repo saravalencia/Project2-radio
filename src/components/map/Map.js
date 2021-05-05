@@ -12,7 +12,7 @@ import {MyContext} from '../../context/MyProvider'
 function Map() {
 
   const context = useContext(MyContext)
- console.log(context)
+ 
   
   useEffect(() => {
 

@@ -84,7 +84,7 @@ const MyProvider = props => {
   const playNextRadioRandom = () => {
     
    
-    if (currentRandomRadioIndex === 100 ) {
+    if (currentRandomRadioIndex === 10 ) {
       setCurrentRandomRadioIndex(0);
       setValueRadio(stations[0])
     } else {

@@ -52,10 +52,10 @@ return (
             </div>         
              
             <div className="musicControls">
-                <span  className="prev" onClick={context.setValueRadio ? context.playNextRadio : context.playNextRadioRandom}><i class="fas fa-step-backward"></i></span>
+                <span  className="prev" onClick={context.playPreviousRadio}><i class="fas fa-step-backward"></i></span>
                 <span className="play" onClick={accion}><i class={props.isPlaying ? "fas fa-pause" : "fas fa-play"}></i></span>
                 <span  className="next" onClick={context.playNextRadio}><i class="fas fa-step-forward"></i></span>
-                <span className="random" onClick={context.getNewRandomRadio}><i class="fas fa-random"></i></span>
+                <span className="random" onClick={context.setValueRadio ? context.playNextRadio : context.playNextRadioRandom}><i class="fas fa-random"></i></span>
                                 
             </div>
             {

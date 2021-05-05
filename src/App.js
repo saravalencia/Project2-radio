@@ -13,7 +13,6 @@ import {MyContext} from './context/MyProvider'
 function App() {
 
   const context = useContext(MyContext)
-   console.log(context)
 
   return (
     
