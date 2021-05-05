@@ -35,8 +35,8 @@ You will also see any lint errors in the console.
 * [Amcharts4-geodata](https://www.npmjs.com/package/@amcharts/amcharts4-geodata): A chart world map, that we use to render our map and connect to our API.
 
 
-## Aiuthors 
+## Authors
 
-... on progress
+
 
 
