@@ -6,16 +6,16 @@ Web app created by students of the Wild Code School using React.
 
 ## Getting Started
 
-https://github.com/saravalencia/Project2-radio.git
-
 These instructions will get you a copy of the project up and running
 on your local machine for development and testing purposes.
 
 1. Clone our Repository : https://github.com/saravalencia/Project2-radio.git
 
-## 2. Installing
+2. Installing:
 
 ### `npm install`
+
+3. Launch the web app:
 
 ### `npm start`
 
