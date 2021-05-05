@@ -43,7 +43,9 @@ const ContactList = () => {
         <Cards
           key={index}
           img={contact.img}
-          name={contact.name}          
+          name={contact.name}    
+          linkedin={contact.linkedin}     
+          github={contact.github}       
           text={contact.text}
         />
       ))}
