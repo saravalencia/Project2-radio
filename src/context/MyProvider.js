@@ -13,6 +13,7 @@ const MyProvider = props => {
   let [stations, setStations] = useState(false);
   let [randomRadio, setRandomRadio] = useState("http://radiomeuh.ice.infomaniak.ch/radiomeuh-128.mp3")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
+  let [currentRandomRadioIndex, setCurrentRandomRadioIndex] = useState('')
   let [bottomPopUp,setBottomPopUp] = useState(false)
   let [isPlaying, setIsPlaying] = useState(true);
   let [favorites, setFavorites] = useState([]);
@@ -69,26 +70,44 @@ const MyProvider = props => {
    
    if (currentCountryRadioIndex === 9 ) {
      setCurrentCountryRadioIndex(0);
-     setValueRadio(countryRadio[0].url)
+     setValueRadio(countryRadio[0])
    } else {
-     console.log(countryRadio[currentCountryRadioIndex + 1].url)
+     console.log(countryRadio[currentCountryRadioIndex + 1])
     
-    setValueRadio(countryRadio[currentCountryRadioIndex + 1].url);
+    setValueRadio(countryRadio[currentCountryRadioIndex + 1]);
     setCurrentCountryRadioIndex(currentCountryRadioIndex + 1)
+    
    }
     
   }
+
+  const playNextRadioRandom = () => {
+    
+   
+    if (currentRandomRadioIndex === 100 ) {
+      setCurrentRandomRadioIndex(0);
+      setValueRadio(stations[0])
+    } else {
+      console.log(stations[currentRandomRadioIndex + 1])
+     
+     setValueRadio(stations[currentRandomRadioIndex + 1]);
+     setCurrentRandomRadioIndex(currentRandomRadioIndex + 1)
+     
+    }
+     
+   }
+  
 
   const playPreviousRadio = () => {
     
    
     if (currentCountryRadioIndex === 9 ) {
       setCurrentCountryRadioIndex(0);
-      setValueRadio(countryRadio[0].url)
+      setValueRadio(countryRadio[0])
     } else {
-      console.log(countryRadio[currentCountryRadioIndex - 1].url)
+      console.log(countryRadio[currentCountryRadioIndex - 1])
      
-     setValueRadio(countryRadio[currentCountryRadioIndex - 1].url);
+     setValueRadio(countryRadio[currentCountryRadioIndex - 1]);
      setCurrentCountryRadioIndex(currentCountryRadioIndex - 1)
     }
      
@@ -126,6 +145,7 @@ const handleFavorites = (radiosFavoritesInfo) => {
             stations: stations,
             randomRadio: randomRadio,
             currentCountryRadioIndex: currentCountryRadioIndex,
+            currentRandomRadioIndex: currentRandomRadioIndex,
             isPlaying: isPlaying,
             showInfo: showInfo,
             bottomPopUp: bottomPopUp,
@@ -139,6 +159,7 @@ const handleFavorites = (radiosFavoritesInfo) => {
             getRadio: getRadio,
             getNewRandomRadio: getNewRandomRadio,
             playNextRadio: playNextRadio,
+            playNextRadioRandom: playNextRadioRandom,
             playPreviousRadio: playPreviousRadio,
             getDataRandom: getDataRandom,
             

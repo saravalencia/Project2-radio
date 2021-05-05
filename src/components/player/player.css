@@ -22,8 +22,23 @@
     margin-right: 15px;   
 }
 
-.volBar{
-  background: chocolate;
+/*TRY*/
+
+
+ 
+
+ 
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  cursor: pointer;
+  background: #EFFF12;
+  border-radius: 5px;
+  
+}
+
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -4px;
 }
 
 .volum {
@@ -34,7 +49,14 @@
  color: #EFFF12;
   font-size: 30px;
   cursor: pointer;
-  margin-left: 50%;
+ 
+  
+}
+
+.fa-volume-mute{
+  color: #EFFF12;
+  font-size: 30px;
+  cursor: pointer;
   
 }
 
@@ -156,12 +178,17 @@ padding-right: 20px;
       display:none;
     }
 
-    .volBar:hover{
-      display: block;
+    input #volBar{
+      display:none;
     }
 
+    .progressb{
+      display: none;
+    }  
     .name-country-radio img{
       display: none;
     }
-  
+    input[type=range]{
+      display: none;
+    }
   }
