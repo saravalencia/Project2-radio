@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import MyProvider from './context/MyProvider'
+
 
 ReactDOM.render(
-<BrowserRouter>
-<App />
-</BrowserRouter>,
- document.getElementById('root')
+<MyProvider><App /></MyProvider>, document.getElementById('root')
 );

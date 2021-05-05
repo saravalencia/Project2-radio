@@ -1,46 +1,57 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import defaultImage from './defaultImage.jpg'
 import './menuRadio.css'
+import {MyContext} from '../../context/MyProvider'
+import Favorites from './Radios'
 
-function MenuRadio(props){
 
 
-  /* Back-Next
-  
-  useEffect(() => {
-    setNextRadioIndex(() => {
-      if (currentRadioIndex + 1 > valueRadio.length - 1) {
-        return 0;
-      } else {
-        return currentRadioIndex + 1;
-      }
-    });
-  }, [currentRadioIndex]);*/
+function MenuRadio(){
 
-    return (props.trigger) ? (
+  const context = useContext(MyContext)
 
-         
-  <div className="container-popUp"> 
-      
-        <button className="btn-cl-pop" onClick={()=> props.setBottomPopUp(false)}>X</button>
-      
-           
-      
+
+  const setDefaultSrc = (event) => {
+    event.target.src = defaultImage;
+}
+
+    return (context.bottomPopUp) ? (
+
+   <div className="container-popUp">
+
+<div className="modal-wrapper">       
+      <div className="modal-header">
+            <h1>TOP 10 RADIOS LIST</h1>
+            <spam  className="close-modal-btn" onClick={()=> context.setBottomPopUp(false)}>X</spam>
+      </div>
+      <div className="modal-content">
       {
           
-          props.countryRadio.filter((country) => country.codec === "MP3").sort((a,b) => b.votes - a.votes ).slice(0,10).map((countrys)=> 
-           <div className="container-all-radios mov-radios"> 
-          {<img className="img" src={countrys.favicon}/> }
-          <a  className='a-radio' onClick={() => props.getRadio(countrys.url_resolved)}>
-          {countrys.name}
-          </a>
-          <button className="button-favorites">+</button>          
+          context.countryRadio.map((countrys, index)=> 
+
+          <div key={index} className="modal-body"> 
+          {<a onClick={() => context.getRadio(countrys)}><img className="img" alt="Radio-Icon" onError={setDefaultSrc} src={countrys.favicon} /></a> }
+          <p className='a-radio' onClick={() => context.getRadio(countrys, index)}>
+          {countrys.name}  
+          </p> 
+          <Favorites
+          handleFavorites={context.handleFavorites}
+          info={countrys}
+          // name={countrys.name}
+          // favicon={countrys.favicon} 
+          // url_resolved={countrys.url_resolved}
+          />                
           </div>
           
          
-          )}
-    
-      
-  </div> 
+          )}  
+      </div>       
+        
+    </div>
+
+
+   </div>      
+   
  
  
     ) : "";
@@ -50,3 +61,7 @@ function MenuRadio(props){
 }
 
 export default MenuRadio;
+
+
+
+

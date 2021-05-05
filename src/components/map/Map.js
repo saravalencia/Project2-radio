@@ -1,29 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
+import './map.css'
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
+import {MyContext} from '../../context/MyProvider'
 
-import './map.css';
 
 /*[ISO2 country code] to find countrys by code*/
 
 
-function Map(props) {
+function Map() {
 
-  /*let [country, setCountry] = useState('')
+  const context = useContext(MyContext)
+ 
   
-  const getData = (countryCode) => {
-    fetch('https://de1.api.radio-browser.info/json/stations/bycountrycodeexact/' + countryCode)
-    .then(response => response.json())
-    .then(data => {
-      setCountry(data)
-      setApiloaded(true)     
-    }) 
-  }*/
-  
-
-  
-
+  useEffect(() => {
 
 
 const chart = am4core.create("chartdiv", am4maps.MapChart);
@@ -63,21 +54,23 @@ polygonTemplate.fill = am4core.color("#4040CE");
 
   polygonTemplate.events.on('hit', function (e)  {
      let countryCode = e.target.dataItem.dataContext.id
-     props.getCountryCode(countryCode)
-     props.setBottomPopUp(true)
+     context.getCountryCode(countryCode)
+     context.setBottomPopUp(true)
     })
 
  
-     // mettre a jour le state
- 
+     
+    }, [])
 
 // Create hover state and set alternative fill color
 return (
  
-  <div id = "chartdiv" className="chartdiv">
-  </div> 
+
+ 
+    <div id = "chartdiv" className="chartdiv">
+  </div>
+ 
 );
 }
 
 export default Map;
- 

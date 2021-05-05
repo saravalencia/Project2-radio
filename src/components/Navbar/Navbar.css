@@ -18,11 +18,13 @@
     font-size: 1.6rem;
 }
 
+
+
 .nav-menu {
  
  display: grid;
  grid-template-columns: repeat(5, auto);
- grid-gap: 50px;
+ grid-gap: 4px;
 list-style: none;
 text-align: center;
 width: 70vw;
@@ -34,9 +36,12 @@ margin-left: 1rem;
 .nav-links {
     color: black;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0rem 1rem;
 }
 
+.nav-random{
+    cursor: pointer;
+}
 .nav-links:hover {
     background-color: #6d76f7;
     border-radius: 10px;
@@ -47,7 +52,7 @@ margin-left: 1rem;
     display: none;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width:700px) {
     .NavbarItems{
         position: relative;
     }

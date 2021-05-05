@@ -1,9 +1,13 @@
+import React, {useContext} from 'react'
 import {MenuItems} from './MenuItems';
 import './Navbar.css';
 import {useState} from 'react';
-
+import {Link} from 'react-router-dom'
+import {MyContext} from '../../context/MyProvider'
 
 function Navbar() {
+
+  const context = useContext(MyContext)
 
     const [click, clicked] = useState(false)
 
@@ -22,12 +26,13 @@ function Navbar() {
                {MenuItems.map((item, index) => {
                    return(
                      <li key={index}>
-                         <a className={item.cName} href={item.url}>
-                           {item.icon}  {item.title}
-                        </a>
+                        
+                          <Link className={item.cName} to={item.url}> {item.icon}  {item.title} </Link> 
+                          
                      </li>
                    )
                })}  
+               <li onClick={context.getNewRandomRadio} className='nav-links nav-random'><i class="fas fa-music"></i> Random Radio</li>
         </ul>   </ul>
         <h1 className='radio-logo'>Radio<i className="fas fa-compact-disc"></i></h1>
       </nav>
