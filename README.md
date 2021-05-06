@@ -50,7 +50,7 @@ We are a group of 4 students from the Wild Code School bootcamp: Alba, Manuel, V
 ## Linkedln profiles
 
 * [Alba López Melián](https://www.linkedin.com/in/albalopezmelian/)
-* [Sara Valecia](https://www.linkedin.com/in/sara-valencia/)
+* [Sara Valencia](https://www.linkedin.com/in/sara-valencia/)
 * [Manuel Marque](https://www.linkedin.com/in/manuel-marque/)
 * [Virginia Herrera Herrera](https://www.linkedin.com/in/virginia-herrera-herrera/)
 
