@@ -3,18 +3,20 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 42px 0 42px;
+    margin: 50px 0 50px;
 }
 
 .card-container{
     width: 244px;
+    margin: 4px;
+    margin-right: 4px;
 }
 
 
 .image-container img {
     overflow: hidden;
     height: 171px;
-    border-radius: 7%;
+    border-radius: 60%;
     display: block;
     margin: auto;
 }
@@ -24,6 +26,6 @@
 }
 .card-title{
     margin-bottom: 0.5rem;
+    margin-top: 1rem;
 }
-
 

@@ -22,7 +22,8 @@ function MenuRadio(){
 <div className="modal-wrapper">       
       <div className="modal-header">
             <h1>TOP 10 RADIOS LIST</h1>
-            <spam  className="close-modal-btn" onClick={()=> context.setBottomPopUp(false)}>X</spam>
+            <i class="far fa-times-circle"  onClick={()=> context.setBottomPopUp(false)}></i>
+            
       </div>
       <div className="modal-content">
       {
