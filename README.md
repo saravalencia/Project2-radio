@@ -32,6 +32,8 @@ You will also see any lint errors in the console.
 
 * [Css](https://www.w3.org ): To style our application.
 
+* [Radio Browser API](https://www.radio-browser.info/#/):The API used for this project.
+
 * [Amcharts4-geodata](https://www.npmjs.com/package/@amcharts/amcharts4-geodata): A chart world map, that we use to render our map and connect to our API.
 
 
