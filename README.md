@@ -1,12 +1,21 @@
-# Getting Started with Create React App
+# Project II RADIOO APP :musical_note:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web app created by students of the Wild Code School using React.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will get you a copy of the project up and running
+on your local machine for development and testing purposes.
 
-### `yarn start`
+1. Clone our Repository : https://github.com/saravalencia/Project2-radio.git
+
+2. Installing:
+
+### `npm install`
+
+3. Launch the web app:
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,57 +23,36 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Built with 
 
-### `yarn build`
+* [React](https://reactjs.org/): We used Hooks like State and Effect, also we implemented React Context and React Router.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [Node.js](https://nodejs.org/en/): For dependency managment.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* [Css](https://www.w3.org ): To style our application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [Radio Browser API](https://www.radio-browser.info/#/):The API used for this project.
 
-### `yarn eject`
+* [Amcharts4-geodata](https://www.npmjs.com/package/@amcharts/amcharts4-geodata): A chart world map, that we use to render our map and connect to our API.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project RoadMap
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To start with the project, we decided to create the wireframe first to get an idea of how to structure the page. To do this we use Adobe XD. The project is done with react and node.js and we implement a library for the map and an API “Radio Browser API” to collect the information from all the radios, this API allows us to access 30000 radio stations that are updated constantly, making it a stable API. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Our objective
+Make a website that shows the radios of the country of one's choice in the world and allow you to play and save them to continue listening to them in the future.
+ 
+## Authors
+We are a group of 4 students from the Wild Code School bootcamp: Alba, Manuel, Virgina and Sara, this is our second project during a 5 month bootcamp, we created this project while learning the basics of React and after 1 month since the start of the bootcamp, we also had one month to develop this web app.
 
-## Learn More
+## Linkedln profiles
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* [Alba López Melián](https://www.linkedin.com/in/albalopezmelian/)
+* [Sara Valencia](https://www.linkedin.com/in/sara-valencia/)
+* [Manuel Marque](https://www.linkedin.com/in/manuel-marque/)
+* [Virginia Herrera Herrera](https://www.linkedin.com/in/virginia-herrera-herrera/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
