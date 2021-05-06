@@ -16,10 +16,22 @@
     justify-content: center;
 }
 
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  cursor: pointer;
+  background: #EFFF12;
+  border-radius: 5px;
+  
+}
+
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -7px;
+}
+
 .vlmen{
     display:flex;
     align-content: center;
-    margin-right: 15px;   
+    margin-right: 35px;   
 }
 
 /*TRY*/
@@ -38,7 +50,7 @@ input[type=range]::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-webkit-slider-thumb {
-  margin-top: -4px;
+  margin-top: -6px;
 }
 
 .volum {
@@ -67,7 +79,8 @@ input[type=range]::-webkit-slider-thumb {
 .fa-random {
   color: #EFFF12;
   font-size: 23px;
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-right: 15px;
 }
 
 .fa-random:hover {
@@ -157,9 +170,13 @@ padding-right: 20px;
   border-radius: 30px;
   align-items: center;
   width: 3rem ;
- 
+
+}
 
 
+.image-player-hide{
+  display:none;
+  
 }
 .name-country-radio{
   display: flex;

@@ -5,8 +5,12 @@
     margin: 7rem auto;
     width: 93%;
 }
-
+ 
 .close-modal-btn{
+    cursor: pointer;
+}
+
+.favorite{
     cursor: pointer;
 }
 
