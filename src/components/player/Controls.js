@@ -47,7 +47,7 @@ return (
         <div className="controls">
                 
             <div className='vlmen'>
-                <span className="volum" onClick={muted}><i class={props.isMuted ? "fas fa-volume-mute" : "fas fa-volume-down"}></i> </span>
+                <span className="volum" onClick={muted}><i className={props.isMuted ? "fas fa-volume-mute" : "fas fa-volume-down"}></i> </span>
                 <input value={Math.round(statevolum * 100)} type="range" name="volBar" id="volBar" onChange={(e) => handleVolume(e.target.value / 100)} />
             </div>         
              
@@ -66,7 +66,7 @@ return (
                     <img className="image-player" src={context.valueRadio.favicon}  onError={setDefaultSrc}/>
                 </div> 
             :
-                <div className="name-country-radio">
+                <div className={context.valueRadio.url_resolved ? "name-country-radio" : "name-country-radio-hidden"}>
                     <h3 className='radio-name'>{context.randomRadio.name} </h3>
                     <h3 className='country-name'>{context.randomRadio.country}</h3> 
                     <img className={context.randomRadio ? "image-player" : "image-player-hide" }src={context.randomRadio.favicon}  onError={setDefaultSrc}/>

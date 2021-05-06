@@ -185,6 +185,10 @@ padding-right: 20px;
   color: rgb(217, 243, 242);  
 }
 
+.name-country-radio-hidden{
+  display: none;
+}
+
 .currentT, .totalT {
  width: 35px;
 }
