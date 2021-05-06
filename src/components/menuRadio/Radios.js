@@ -14,7 +14,7 @@ function Favorites({handleFavorites, info}) {
 
            
           <div className="favorite" onClick={handleClick}>
-          {isFavorite ? "♥" : "♡"}  
+          {isFavorite ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>}  
           </div>           
           
            
