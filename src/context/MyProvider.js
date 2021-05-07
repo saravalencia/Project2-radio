@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
+
 export const MyContext = React.createContext();
 
  
@@ -13,11 +14,13 @@ const MyProvider = props => {
   let [stations, setStations] = useState(false);
   let [randomRadio, setRandomRadio] = useState("")
   let [currentCountryRadioIndex, setCurrentCountryRadioIndex] = useState('')
-  let [currentRandomRadioIndex, setCurrentRandomRadioIndex] = useState('')
   let [bottomPopUp,setBottomPopUp] = useState(false)
   let [isPlaying, setIsPlaying] = useState(true);
   let [favorites, setFavorites] = useState([]);
-  let [showInfo, setShowInfo] = useState(false)
+  let [favoritesRandom, setFavoritesRandom] = useState([]);
+  let [showInfo, setShowInfo] = useState(false);
+ 
+
   
 
 
@@ -50,6 +53,12 @@ const MyProvider = props => {
     setIsPlaying(true)
     
   }
+  const getRadioFavoriteRandom = (favoriteRadioRandom) => {
+    setValueRadio(favoriteRadioRandom)
+    console.log(favoriteRadioRandom)
+    setIsPlaying(true)
+    
+  }
   
 
   const getNewRandomRadio = () => {
@@ -64,7 +73,7 @@ const MyProvider = props => {
     
   }
 
- 
+  
 
   const playNextRadio = () => {
     
@@ -82,21 +91,6 @@ const MyProvider = props => {
     
   }
 
-   
-   const playPreviusRadioRandom = () => {
-    
-   
-    if (currentRandomRadioIndex === 9 ) {
-      setCurrentRandomRadioIndex(0);
-      setRandomRadio(stations[0])
-    } else {
-      console.log(stations[currentRandomRadioIndex - 1])
-     
-     setRandomRadio(stations[currentRandomRadioIndex - 1]);
-     setCurrentRandomRadioIndex(currentRandomRadioIndex - 1)
-    }
-     
-   }
 
   
 
@@ -122,6 +116,14 @@ const handleFavorites = (radiosFavoritesInfo) => {
  
 
 };
+const handleFavoritesRandom = (radiosFavoritesInfoRandom) => {
+
+   setFavoritesRandom([...favoritesRandom, radiosFavoritesInfoRandom]);
+ 
+
+};
+
+
 
     return (
         <MyContext.Provider value={{
@@ -132,21 +134,22 @@ const handleFavorites = (radiosFavoritesInfo) => {
             stations: stations,
             randomRadio: randomRadio,
             currentCountryRadioIndex: currentCountryRadioIndex,
-            currentRandomRadioIndex: currentRandomRadioIndex,
             isPlaying: isPlaying,
             showInfo: showInfo,
             bottomPopUp: bottomPopUp,
             favoritesList: favorites,
+            favoritesListRandom: favoritesRandom,
+            getRadioFavoriteRandom: getRadioFavoriteRandom,
             handleFavorites: handleFavorites,
+            handleFavoritesRandom: handleFavoritesRandom,          
             setIsPlaying: setIsPlaying,
-            getRadioFavorite: getRadioFavorite,            
+            getRadioFavorite: getRadioFavorite,           
             setBottomPopUp: setBottomPopUp,
             getData: getData,
             getCountryCode: getCountryCode,
             getRadio: getRadio,
             getNewRandomRadio: getNewRandomRadio,
             playNextRadio: playNextRadio,
-            playPreviusRadioRandom: playPreviusRadioRandom,
             getDataRandom: getDataRandom,
             
             
