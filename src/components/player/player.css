@@ -17,7 +17,8 @@
 }
 
 .favoriteRandom{
-
+  display: flex;
+  align-items: center;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
