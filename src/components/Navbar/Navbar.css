@@ -58,6 +58,8 @@ margin-left: 1rem;
     .NavbarItems{
         position: relative;
     }
+
+   
     .nav-menu{
         display: flex;
         flex-direction: column;
@@ -79,6 +81,7 @@ margin-left: 1rem;
         
         z-index: 100;
     }
+   
     .nav-links{
         text-align: center;
         padding-top: 2rem;

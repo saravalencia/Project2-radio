@@ -21,6 +21,10 @@
   align-items: center;
 }
 
+.fa-heart{
+  cursor: pointer;
+}
+
 input[type=range]::-webkit-slider-runnable-track {
   height: 5px;
   cursor: pointer;

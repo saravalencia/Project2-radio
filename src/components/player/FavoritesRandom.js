@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-
-
+import './player.css'
 
 function FavoritesRandom({handleFavoritesRandom, infoRandom}) {
     const [isFavoriteRandom, setIsFavoriteRandom] = useState(false)
